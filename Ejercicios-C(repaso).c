@@ -33,10 +33,6 @@ int main(int argc, char *argv[]){
             }
             printf("Cada alumno debe pagar $%d y el costo del micro es de %d\n\n", pago, costo);
         case 2:
-            /*int sueldo;
-            int comision = sueldo * 0.1;
-            int com_men = 3 * (sueldo * 0.1);
-            int total = sueldo + com_men; */
             printf("Un vendedor desea saber cuanto dinero tendra en el mes tomando en cuenta su salario y comisiones\n");
             printf("Inserta un sueldo base: ");
             int sueldo;
@@ -71,11 +67,31 @@ int main(int argc, char *argv[]){
             printf("La calificacion final de la materia es %.2f\n\n", Cal_F);
         case 4:
              printf("Este programa imprime solo numeros pares\n");
-             printf("Ingresa 2 numeros(primero menor y segundo mayor): ");
+             printf("Ingresa 2 numeros: ");
              int N1;
              int N2;
+             int extra = N1;
+             if(N1 > N2){
+                N1 = N2;
+                N2 = extra;
+             }
              scanf("%d %d", &N1, &N2);
              printf("\n");
-             for(int i = 0; )
+             for(int i = 0; N1 < N2; N1++){
+                if(N1 % 2 == 0){
+                    printf("%d ", N1);
+                }
+             }
+             printf("\n\n");
+        case 5:
+            printf("¿Donde se encontraran ciertas personas a cierta velocidad?\n");
+            int p_1 = 70;
+            int p_2 = 150;
+            int velocidad = 10;
+            int distancia = p_2 - p_1;
+            printf("La primera persona esta en el kilometro %d\nLa segunda persona esta en el kilometro %d\nLa distancia entre ellos es %dkm\n", p_1, p_2, distancia);
+            printf("Como ambos viajan a una velocidad de %dkm/h, ambos se encontraran a la mitad de la distancia entre ellos\n", velocidad);
+            printf("Cada uno recorre %dkm al mismo tiempo y se encuentran en el kilometro %d\n", distancia/2, p_1 + distancia/2);
     }
+    printf("\nFinal del programa\n");
 }
