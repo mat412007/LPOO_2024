@@ -50,6 +50,32 @@ int main(int argc, char *argv[]){
             int total = sueldo + com_men;
             printf("Finalmente el total de dinero al mes es igual a $%d\n\n", total);
         case 3:
-            
+            printf("Un alumno desea saber cuál será su calificación final en la materia de Algoritmos\n");
+            printf("Para predecir dicho resultado, ingrese los siguientes numeros:\n");
+            printf("Tres calificaciones parciales: ");
+            int cal_1;
+            int cal_2;
+            int cal_3;
+            scanf("%d %d %d", &cal_1, &cal_2, &cal_3);
+            float promedio = (cal_1 + cal_2 + cal_3) / 3;
+            printf("\n");
+            printf("Calificacion del examen final: ");
+            int cal_ef;
+            scanf("%d", &cal_ef);
+            printf("\n");
+            printf("Calificacion trabajo final: ");
+            int cal_tf;
+            scanf("%d", &cal_tf);
+            printf("\n");
+            float Cal_F = promedio + cal_ef + cal_tf;
+            printf("La calificacion final de la materia es %.2f\n\n", Cal_F);
+        case 4:
+             printf("Este programa imprime solo numeros pares\n");
+             printf("Ingresa 2 numeros(primero menor y segundo mayor): ");
+             int N1;
+             int N2;
+             scanf("%d %d", &N1, &N2);
+             printf("\n");
+             for(int i = 0; )
     }
 }
