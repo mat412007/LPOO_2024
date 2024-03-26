@@ -63,7 +63,7 @@ int main(int argc, char *argv[]){
             int cal_tf;
             scanf("%d", &cal_tf);
             printf("\n");
-            float Cal_F = promedio + cal_ef + cal_tf;
+            float Cal_F = (promedio * 0.55) + (cal_ef * 0.3) + (cal_tf * 0.15);
             printf("La calificacion final de la materia es %.2f\n\n", Cal_F);
         case 4:
              printf("Este programa imprime solo numeros pares\n");
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
              }
              scanf("%d %d", &N1, &N2);
              printf("\n");
-             for(int i = 0; N1 < N2; N1++){
+             for(int i = 0; N1 <= N2; N1++){
                 if(N1 % 2 == 0){
                     printf("%d ", N1);
                 }
