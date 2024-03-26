@@ -87,11 +87,11 @@ int main(int argc, char *argv[]){
             printf("¿Donde se encontraran ciertas personas a cierta velocidad?\n");
             int p_1 = 70;
             int p_2 = 150;
-            int velocidad = 10;
             int distancia = p_2 - p_1;
+            int recorrido = distancia / 2;
             printf("La primera persona esta en el kilometro %d\nLa segunda persona esta en el kilometro %d\nLa distancia entre ellos es %dkm\n", p_1, p_2, distancia);
-            printf("Como ambos viajan a una velocidad de %dkm/h, ambos se encontraran a la mitad de la distancia entre ellos\n", velocidad);
-            printf("Cada uno recorre %dkm al mismo tiempo y se encuentran en el kilometro %d\n", distancia/2, p_1 + distancia/2);
+            printf("Como ambos van siempre a la misma velocidad, sin importar la velocidad a la que vayan se encontraran en el mismo punto\n");
+            printf("Cada uno recorre %dkm al mismo tiempo y se encuentran en el kilometro %d\n", recorrido, p_1 + recorrido);
     }
     printf("\nFinal del programa\n");
 }
