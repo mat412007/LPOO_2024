@@ -51,5 +51,25 @@ int main(int argc, char *argv[]){
             else if(par_impar % 2 != 0){
                 printf("El numero es impar\n");
             }
+        case 4:
+            printf("\nIngresa las notas de 4 pruebas de un alumno y la nota de tarea, se pide determinar si el alumno aprobó o no la materia (se aprueba con 6)\n");
+            printf("Ingresa las 4 notas de pruebas: ");
+            float nota_prueba_1;
+            float nota_prueba_2;
+            float nota_prueba_3;
+            float nota_prueba_4;
+            scanf("%f %f %f %f", &nota_prueba_1, &nota_prueba_2, &nota_prueba_3, &nota_prueba_4);
+            printf("Ingresa la nota de tarea: ");
+            float nota_tarea;
+            scanf("%f", &nota_tarea);
+            printf("El total es %.0f float\n", nota_prueba_1 + nota_prueba_2 + nota_prueba_3 + nota_prueba_4 + nota_tarea);
+            float aprobado = (nota_prueba_1 + nota_prueba_2 + nota_prueba_3 + nota_prueba_4 + nota_tarea) / 5;
+            printf("Obtuviste un %.2f\n", aprobado);
+            if(aprobado < 6){
+                printf("Desaprobado\n");
+            }
+            else if(aprobado >= 6){
+                printf("Aprobado\n");
+            }
     }
 }
