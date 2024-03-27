@@ -71,5 +71,22 @@ int main(int argc, char *argv[]){
             else if(aprobado >= 6){
                 printf("Aprobado\n");
             }
+        case 5:
+            printf("\nDada una nota escriba “Aprobado” ó “Reprobado” según la nota ingresada, pero además si la nota de aprobación es mayor o igual a 8, escriba .felicitaciones. y si la nota es 1, escriba “Debes esforzarte más”\n");
+            printf("Ingrese la nota: ");
+            int nota;
+            scanf("%d", &nota);
+            if(nota < 6){
+                printf("Desaprobado\n");
+                if(nota == 1){
+                    printf("Debes esforzarte mas\n");
+                }
+            }
+            else if(nota >= 6){
+                printf("Aprobado\n");
+                if(nota >= 8){
+                    printf("Felicitaciones");
+                }
+            }
     }
 }
