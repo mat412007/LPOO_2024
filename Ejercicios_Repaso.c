@@ -88,5 +88,27 @@ int main(int argc, char *argv[]){
                     printf("Felicitaciones");
                 }
             }
+        case 6:
+            printf("\nDado un alquiler, se pide determinar  cuánto paga en impuesto por concepto de alquiler, considerando la siguiente escala de cobro:  sueldo <= 202	 →0%% impuesto,  202 < sueldo <= 607 → 5%%,  607 < sueldo <= 1.013 →10%%, 1.013 < sueldo <= 1.418 →15%%, 1.418 < sueldo → 25%%\n");
+            printf("¿Cual es tu sueldo($)? => ");
+            int sueldo;
+            scanf("%d", &sueldo);
+            int impuesto;
+            if(sueldo <= 202){
+                impuesto = 0;
+            }
+            else if(sueldo > 202 && sueldo <= 607){
+                impuesto = 5;
+            }
+            else if(sueldo > 607 && sueldo <= 1013){
+                impuesto = 10;
+            }
+            else if(sueldo > 1013 && sueldo <= 1418){
+                impuesto = 15;
+            }
+            else if(sueldo > 1418){
+                impuesto = 25;
+            }
+
     }
 }
