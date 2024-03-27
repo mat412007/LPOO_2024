@@ -35,5 +35,20 @@ int main(int argc, char *argv[]){
             scanf("%d %d %d", &num_1, &num_2, &num_3);
             int promedio = (num_1 + num_2 + num_3) / 3;
             printf("El promedio de %d, %d, %d es igual a %d\n", num_1, num_2, num_3, promedio);
+        case 3:
+            printf("\nDeterminar si un valor numérico positivo, mayor que cero ingresado es par o impar\n");
+            printf("Ingresa un numero: ");
+            int par_impar;
+            scanf("%d", &par_impar);
+            if(par_impar < 0){
+                printf("\nError. El numero debe ser positivo\n");
+                continue;
+            }
+            else if(par_impar % 2 == 0){
+                printf("El numero es par\n");
+            }
+            else if(par_impar % 2 != 0){
+                printf("El numero es impar\n");
+            }
     }
 }
