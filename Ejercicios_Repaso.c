@@ -3,11 +3,12 @@
 
 int main(int argc, char *argv[]){
     printf("Veamos unos ejercicos de código de C!\n");
-    int inicio = 1;
-    printf("\n");
+    printf("¿Que ejercicio desea ver: ");
+    int inicio;
+    scanf("%d", &inicio);
     switch(inicio){
         case 1:
-            printf("Como hallar tres numeros consecutivos que den como resultado un numero multiplo de 3\n");
+            printf("\nComo hallar tres numeros consecutivos que den como resultado un numero multiplo de 3\n");
             printf("Inserta un numero: ");
             int con;
             scanf("%d", &con);
@@ -42,7 +43,7 @@ int main(int argc, char *argv[]){
             scanf("%d", &par_impar);
             if(par_impar < 0){
                 printf("\nError. El numero debe ser positivo\n");
-                continue;
+                break;
             }
             else if(par_impar % 2 == 0){
                 printf("El numero es par\n");
