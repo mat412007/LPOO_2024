@@ -25,6 +25,15 @@ int main(int argc, char *argv[]){
                 con_3++;
                 sum_con = con_1 + con_2 + con_3;
             }
-            printf("\n%d + %d + %d = %d\n", con_1, con_2, con_3, con);
+            printf("%d + %d + %d = %d\n", con_1, con_2, con_3, con);
+        case 2:
+            printf("\nCalcular la media (promedio) de 3 números\n");
+            printf("Ingresa tres numeros: ");
+            int num_1;
+            int num_2;
+            int num_3;
+            scanf("%d %d %d", &num_1, &num_2, &num_3);
+            int promedio = (num_1 + num_2 + num_3) / 3;
+            printf("El promedio de %d, %d, %d es igual a %d\n", num_1, num_2, num_3, promedio);
     }
 }
