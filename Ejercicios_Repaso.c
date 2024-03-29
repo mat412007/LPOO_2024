@@ -150,18 +150,76 @@ int main(int argc, char *argv[]){
             printf("Inserta los segundos: ");
             scanf("%d", &segundos);
             if(segundos < 60){
-                printf("00:00:%d\n", segundos);
+                if(segundos < 10){
+                    printf("00:00:0%d\n", segundos);
+                }
+                else{
+                    printf("00:00:%d\n", segundos);
+                }
             }
             else if(segundos > 60 && segundos < 3600){
                 minutos = segundos / 60;
                 segundos = segundos % 60;
-                printf("00:%.0f:%d\n", minutos, segundos);
+                printf("00:");
+                if(minutos < 10){
+                    printf("0%.0f:", minutos);
+                }
+                else{
+                    printf("%.0f:", minutos);
+                }
+                if(segundos < 10){
+                    printf("0%d:\n", segundos);
+                }
+                else{
+                    printf("%d\n", segundos);
+                }
             }
             else if(segundos > 60){
                 horas = segundos / 3600;
                 minutos = segundos % 3600 / 60;
                 segundos = segundos % 60;
-                printf("%.0f:%.0f:%d\n", horas, minutos, segundos);
+                if(horas < 10){
+                    printf("0%.0f:", horas);
+                }
+                else{
+                    printf("%.0f:", horas);
+                }
+                if(minutos < 10){
+                    printf("0%.0f:", minutos);
+                }
+                else{
+                    printf("%.0f:", minutos);
+                }
+                if(segundos < 10){
+                    printf("0%d:\n", segundos);
+                }
+                else{
+                    printf("%d\n", segundos);
+                }
             }
+        case 11:
+            printf("\nUn alumno desea saber cuál será su calificación final, dicha calificación se compone de los siguientes porcentajes:\n-55%% del promedio final de sus calificaciones (de sus  3 evaluaciones parciales)\n30%% de la calificación de promedio\n15%% de la calificación de un trabajo final\n");
+            int evaluacion_1;
+            int evaluacion_2;
+            int evaluacion_3;
+            int TP_final;
+            printf("Inserta las calificaciones de las 3 evaluaciones: ");
+            scanf("%d %d %d", &evaluacion_1, &evaluacion_2, &evaluacion_3);
+            printf("Inserta la calificacion de tu promedio: ");
+            scanf("%d", &promedio);
+            printf("Inserta la calificacion del trabajo final: ");
+            scanf("%d", &TP_final);
+            float promedio_evaluaciones = (evaluacion_1 + evaluacion_2 + evaluacion_3) / 3;
+            float calificacion = promedio_evaluaciones*0.55 + promedio*0.30 + TP_final*0.15;
+            printf("Tu calificacion final sera %.2f\n", calificacion);
+        case 12:
+            printf("\nUn vendedor recibe un sueldo base más un 10%% extra por comisión de sus ventas, el vendedor desea saber cuánto dinero obtendrá por concepto de comisiones por las tres ventas que realiza en el mes, y el total que recibirá en el mes\n");
+            int sueldo_mes;
+            printf("Ingresa tu sueldo base: ");
+            scanf("%d", &sueldo_mes);
+            printf("Obtendra $%.2f por comisiones por las ventas al mes\n", sueldo_mes*0.3);
+            float total_mes = sueldo_mes + sueldo_mes*0.3;
+            printf("Al mes recibira $%.2f\n", total_mes);
+
     }
 }
