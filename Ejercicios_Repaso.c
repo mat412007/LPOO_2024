@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char *argv[]){
     printf("Veamos unos ejercicos de código de C!\n");
@@ -268,5 +269,24 @@ int main(int argc, char *argv[]){
             scanf("%d", &pesos);
             float dolares = pesos / 858.27;
             printf("Equivalen a $%.2f\n", dolares);
+        case 17:
+            printf("\nCalcular la FCM para cualquier persona, sabiendo que ésta es la fórmula de la Frecuencia cardíaca máxima por géneros:\nPara hombres FCmax = ((210 - (0,5 * edad en años)) - 1%% del peso) + 4\nPara mujeres FCmax = (210 - (0,5 * edad en años)) - 1%% del peso\n");
+            float FMC;
+            char genero[20];
+            float edad;
+            float peso;
+            printf("Eres hombre o mujer: ");
+            scanf("%s", genero);
+            printf("Cual es tu edad: ");
+            scanf("%f", &edad);
+            printf("Cuanto pesas(kg): ");
+            scanf("%f", &peso);
+            if(strcmp(genero, "hombre") == 0){
+                FMC = ((210 - (0.5 * edad)) - (peso*0.01)) + 4;
+            }
+            else if(strcmp(genero, "mujer") == 0){
+                FMC = (210 - (0.5 * edad)) - (peso*0.01);
+            }
+            printf("Tu FMC es igual a %.2f\n", FMC);
     }
 }
