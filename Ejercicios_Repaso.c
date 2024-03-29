@@ -220,6 +220,53 @@ int main(int argc, char *argv[]){
             printf("Obtendra $%.2f por comisiones por las ventas al mes\n", sueldo_mes*0.3);
             float total_mes = sueldo_mes + sueldo_mes*0.3;
             printf("Al mes recibira $%.2f\n", total_mes);
-
+        case 13:
+            printf("\nUna tienda ofrece un descuento del 15%% sobre el total de la compra, y un cliente desea saber cuánto deberá pagar finalmente por su compra\n");
+            int compra;
+            printf("Inserta el total original de la compra: ");
+            scanf("%d", &compra);
+            printf("Usted debera pagar %.2f\n", compra*0.85);
+        case 14:
+            printf("\nGenerar el valor absoluto de un número dado como entrada\n");
+            int absoluto;
+            printf("Inserta el valor numerico: ");
+            scanf("%d", &absoluto);
+            int cuenta = 0;
+            if(absoluto < 0){
+                while(absoluto < 0){
+                    absoluto++;
+                    cuenta++;
+                }
+            }
+            else if(absoluto > 0){
+                while(absoluto > 0){
+                    absoluto--;
+                    cuenta++;
+                }
+            }
+            printf("El valor absoluto es %d\n", cuenta);
+        case 15:
+            printf("\nUn maestro desea saber qué porcentaje de hombres y que porcentaje de mujeres hay en un grupo de estudiantes\n");
+            float estudiantes;
+            float hombres;
+            float mujeres;
+            printf("Ingresa cuantos estudiantes son en total: ");
+            scanf("%f", &estudiantes);
+            printf("Ingresa cuantos hombres son: ");
+            scanf("%f", &hombres);
+            printf("Ingresa cuantas mujeres son: ");
+            scanf("%f", &mujeres);
+            float estudiantes_porcentaje = estudiantes / 100;
+            float hombres_porcentaje = hombres / estudiantes_porcentaje;
+            float mujeres_porcentaje = mujeres / estudiantes_porcentaje;
+            printf("Hombres = %.1f%%\n", hombres_porcentaje);
+            printf("Mujeres = %.1f%%\n", mujeres_porcentaje);
+        case 16:
+            printf("\nDada una cantidad en pesos argentinos, obtener la equivalencia en dólares estadounidenses, asumiendo que la unidad cambiaría es un dato desconocido\n");
+            int pesos;
+            printf("Ingresa una cantidad de pesos argentinos: ");
+            scanf("%d", &pesos);
+            float dolares = pesos / 858.27;
+            printf("Equivalen a $%.2f\n", dolares);
     }
 }
