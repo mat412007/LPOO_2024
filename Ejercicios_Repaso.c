@@ -85,7 +85,7 @@ int main(int argc, char *argv[]){
             else if(nota >= 6){
                 printf("Aprobado\n");
                 if(nota >= 8){
-                    printf("Felicitaciones");
+                    printf("Felicitaciones\n");
                 }
             }
         case 6:
@@ -109,6 +109,59 @@ int main(int argc, char *argv[]){
             else if(sueldo > 1418){
                 impuesto = 25;
             }
-
+            printf("Con tu sueldo de $%d, el impuesto sera de un %d%%\n", sueldo, impuesto);
+        case 7:
+            printf("\nDada como entrada una hora en formato hh:mm, [24], genere como salida la misma hora pero en formato hh:mm [am/pm]\n");
+            int hh;
+            int mm;
+            printf("Ingresa la hora en formato 24hs: ");
+            scanf("%d:%d", &hh, &mm);
+            if(hh < 12){
+                printf("Son las %dam:%d\n", hh, mm);
+            }
+            else if(hh > 12){
+                printf("Son las %dpm:%d\n", hh-12, mm);
+            }
+        case 8: 
+            printf("\nSuponga que un individuo desea invertir su capital en un banco y desea saber ¿Cuánto dinero ahorra despues de un mes, si el banco paga a razón de 2%% mensual?\n");
+            int dinero;
+            printf("Inserta cuanto dinero inviertes en el banco: ");
+            scanf("%d", &dinero);
+            int interes = (dinero * 0.02);
+            int dinero_interes = dinero + (dinero * 0.02);
+            printf("El interes sera de $%d\n", interes);
+            printf("Despues de un mes, tendras un total de $%d\n", dinero_interes);
+        case 9:
+            printf("\nUna persona tiene 50 años, y su hijo 20.  ¿Dentro de cuántos años la edad del padre será el doble que la de su hijo?\n");
+            int padre = 50;
+            int hijo = 20;
+            int a = 0;
+            while(padre != hijo*2){
+                padre++;
+                hijo++;
+                a++;
+            }
+            printf("El padre tendra el de la edad del hijo dentro de %d años\n", a);
+        case 10:
+            printf("\nConvierta a horas, minutos y segundos un tiempo expresado en segundos\n");
+            int segundos;
+            float minutos = 00;
+            float horas = 00;
+            printf("Inserta los segundos: ");
+            scanf("%d", &segundos);
+            if(segundos < 60){
+                printf("00:00:%d\n", segundos);
+            }
+            else if(segundos > 60 && segundos < 3600){
+                minutos = segundos / 60;
+                segundos = segundos % 60;
+                printf("00:%.0f:%d\n", minutos, segundos);
+            }
+            else if(segundos > 60){
+                horas = segundos / 3600;
+                minutos = segundos % 3600 / 60;
+                segundos = segundos % 60;
+                printf("%.0f:%.0f:%d\n", horas, minutos, segundos);
+            }
     }
 }
