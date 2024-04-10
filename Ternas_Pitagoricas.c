@@ -17,7 +17,6 @@ int main(int argc, char *argv[]){
         printf("Deseas averiguar el opuesto\n");
         printf("Inserta el valor de la hipotenusa: ");
         scanf("%f", &hipotenusa);
-        printf("\n");
         printf("Inserta el valor del adyacente: ");
         scanf("%f", &adyacente);
         printf("\n");
@@ -28,7 +27,6 @@ int main(int argc, char *argv[]){
         printf("Deseas averiguar el adyacente\n");
         printf("Inserta el valor de la hipotenusa: ");
         scanf("%f", &hipotenusa);
-        printf("\n");
         printf("Inserta el valor del opuesto: ");
         scanf("%f", &opuesto);
         printf("\n");
@@ -39,7 +37,6 @@ int main(int argc, char *argv[]){
         printf("Deseas averiguar la hipotenusa\n");
         printf("Inserta el valor del opuesto: ");
         scanf("%f", &opuesto);
-        printf("\n");
         printf("Inserta el valor del adyacente: ");
         scanf("%f", &adyacente);
         printf("\n");
