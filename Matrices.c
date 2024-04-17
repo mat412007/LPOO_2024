@@ -20,8 +20,10 @@ int main(int argc, char *argv[]){
     }
     for(int i = 0; i < cantidad; i++){
         for(int x = 0; x < elementos; x++){
-                printf("%d ",matrices[i][x]);
+                printf("|");
+                printf(" %d ",matrices[i][x]);
         }
+        printf("|");
         printf("\n");
     }
 }
