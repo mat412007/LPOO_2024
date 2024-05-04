@@ -12,14 +12,18 @@ int main(int argc, char *arv[]){
         printf("Ingrese el elemento: ");
         scanf("%d", &n[i]);
     }
-
+ 
     for(int i = 1; i < cn; i++){
-        for(int j = 0; j < cn; j++){
+        for(int j = 0; j < cn - i; j++){ 
             if(n[j] < n[j+1]){
                 aux = n[j+1];
                 n[j+1] = n[j];
                 n[j] = aux;
             }
+            for(int x = 0; x < cn; x++){
+                printf("%d ", n[x]);
+            }
+            printf("\n");
         }
     }
 
