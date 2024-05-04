@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
     int puntos_maquina;
     char *movimientos[3] = {"Piedra", "Papel", "Tijera"};
     while(ronda <= 5){
-        printf("\nThis is round number %d", ronda);
+        printf("\nRonda numero %d", ronda);
         int vuelta = 1;
         puntos_jugador = 0;
         puntos_maquina = 0;
@@ -25,22 +25,10 @@ int main(int argc, char *argv[]){
             if(opcion1 == opcion2){
                 printf("Empate\n");
             }
-            else if(opcion1 == 1 && opcion2 == 2){
+            else if(opcion1 == 1 && opcion2 == 2 || opcion1 == 3 && opcion2 == 1 || opcion1 == 2 && opcion2 == 3){
                 puntos_maquina++;
             }
-            else if(opcion1 == 2 && opcion2 == 1){
-                puntos_jugador++;
-            }
-            else if(opcion1 == 1 && opcion2 == 3){
-                puntos_jugador++;
-            }
-            else if(opcion1 == 3 && opcion2 == 1){
-                puntos_maquina++;
-            }
-            else if(opcion1 == 2 && opcion2 == 3){
-                puntos_maquina++;
-            }
-            else if(opcion1 == 3 && opcion2 == 2){
+            else if(opcion1 == 2 && opcion2 == 1 || opcion1 == 1 && opcion2 == 3 || opcion1 == 3 && opcion2 == 2){
                 puntos_jugador++;
             }
             vuelta++;
@@ -54,6 +42,9 @@ int main(int argc, char *argv[]){
             puntaje_jugador++;
         }
         printf("Resultado:\nJugador -> %d\nMaquina -> %d\n", puntaje_jugador, puntaje_maquina);
+        if(puntaje_jugador == 3 || puntaje_maquina == 3){
+            break;
+        }
         ronda++;
     }
 
