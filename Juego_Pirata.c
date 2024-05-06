@@ -82,5 +82,8 @@ int main(int argc, char *argv[]){
             printf("Encontraste el tesoro\n");
             break;
         }
+        else if(intentos == 0){
+            printf("Usaste todos tus intentos. Has perdido");
+        }
     }
 }
