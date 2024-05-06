@@ -55,6 +55,7 @@ int main(int argc, char *argv[]){
     
     int intentos = 50;
     char movimiento;
+    printf("El tesoro esta en %d y %d\n", tesoro_i, tesoro_j);
     printf("Tenes 50 intentos para encontrar el tesoro\n");
     while(intentos != 0){
         printf("A donde quieres mover el pirata?\n");
