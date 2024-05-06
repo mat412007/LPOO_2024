@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
         puntos_maquina = 0;
         while(vuelta <= 3){ // Inicio el loop de las 3 vueltas poor ronda
             printf("\nVuelta numero %d\n", vuelta);
-            printf("What do you choose?\n1- Piedra\n2- Papel\n3- Tijera\n");
+            printf("Cual es tu eleccion?\n1- Piedra\n2- Papel\n3- Tijera\n");
             int opcion1; // Declaro la opcion del usuario
             scanf("%d", &opcion1); // El usuario inserta su opcion
             int opcion2 = 1 + rand() % 3; // La maquina elige una opcion al azar
@@ -30,6 +30,11 @@ int main(int argc, char *argv[]){
             }
             else if(opcion1 == 2 && opcion2 == 1 || opcion1 == 1 && opcion2 == 3 || opcion1 == 3 && opcion2 == 2){ // Situaciones en las que el usario gana la vuelta
                 puntos_jugador++;
+            }
+            else if(opcion1 != 1 && opcion1 != 2 && opcion1 != 3){
+                printf("Opcion no valida. Debes ingresar 1, 2 o 3\n");
+                printf("Reiniciaremos la vuelta\n");
+                vuelta--;
             }
             if(puntos_jugador == 2 || puntos_maquina == 2){ // Cuando cualquiera obtiene 2 puntos en una sola ronda, la gana automaticamente
                 break;
