@@ -30,11 +30,10 @@ void dibujarTablero(int x, int y){
 int main(int argc, char *argv[]){
     printf("\n");
     srand(time(NULL));
-    // Creamos el tablero
-    printf("Tenes 50 intentos para encontrar el tesoro\n");
     // Declaramos la ubicacion del Pirata
     int pirata_i = 1 + rand() % 6;
     int pirata_j = 1 + rand() % 6;
+    // Creamos el tablero
     dibujarTablero(pirata_i, pirata_j);
     // Declaramos la ubicacion del tesoro
     int tesoro_i = 1 + rand() % 6;
@@ -56,7 +55,7 @@ int main(int argc, char *argv[]){
     
     int intentos = 50;
     char movimiento;
-
+    printf("Tenes 50 intentos para encontrar el tesoro\n");
     while(intentos != 0){
         printf("A donde quieres mover el pirata?\n");
         printf("- Norte(N)\n- Sur(S)\n- Este(E)\n- Oeste(O)\n");
