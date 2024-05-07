@@ -92,6 +92,10 @@ int main(int argc, char *argv[]){
             pirata_i += 1;
             pirata_j -= 1;
         }
+        else{
+            printf("Acabas de insertar un movimiento invalido. Intentalo de nuevo\n");
+            intentos++;
+        }
         dibujarTablero(pirata_i, pirata_j);
         printf("------------------------------------------------------------\n");
         if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){ // i == 0 && j == 7 || i == 7 && j == 0
