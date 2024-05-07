@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #include <time.h>
 
@@ -25,7 +26,6 @@ void dibujarTablero(int x, int y){
         }
         printf("\n");
     }
-    printf("\n");
 }
 
 int main(int argc, char *argv[]){
@@ -55,34 +55,55 @@ int main(int argc, char *argv[]){
     }
     
     int intentos = 50;
-    char movimiento;
+    char movimiento[2];
     bool encontrado = false;
     printf("El tesoro esta en %d y %d\n", tesoro_i, tesoro_j);
     printf("Tenes 50 intentos para encontrar el tesoro\n");
     while(intentos != 0){
         printf("Te quedan %d intentos\n", intentos);
         printf("A donde quieres mover el pirata?\n");
-        printf("- Norte(N)\n- Sur(S)\n- Este(E)\n- Oeste(O)\n");
-        scanf(" %c", &movimiento);
-        if(movimiento == 'N'){
+        printf("- Norte(N)\n- Sur(S)\n- Este(E)\n- Oeste(O)\n- Noretse(NE)\n- Noroeste(NO)\n- Sureste(SE)\n- Suroeste(SO)\n");
+        scanf("%s", &movimiento);
+        if(strcmp(movimiento, "N") == 0){
             pirata_i -= 1;
         }
-        else if(movimiento == 'S'){
+        else if(strcmp(movimiento, "S") == 0){
             pirata_i += 1;
         }
-        else if(movimiento == 'E'){
+        else if(strcmp(movimiento, "E") == 0){
             pirata_j += 1;
         }
-        else if(movimiento == 'O'){
+        else if(strcmp(movimiento, "O") == 0){
+            pirata_j -= 1;
+        }
+        else if(strcmp(movimiento, "NE") == 0){
+            pirata_i -= 1;
+            pirata_j += 1;
+        }
+        else if(strcmp(movimiento, "NO") == 0){
+            pirata_i -= 1;
+            pirata_j -= 1;
+        }
+        else if(strcmp(movimiento, "SE") == 0){
+            pirata_i += 1;
+            pirata_j += 1;
+        }
+        else if(strcmp(movimiento, "SO") == 0){
+            pirata_i += 1;
             pirata_j -= 1;
         }
         dibujarTablero(pirata_i, pirata_j);
         printf("------------------------------------------------------------\n");
-        if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){
-            printf("Te has caido al agua, has perdido");
-            break;
+        if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){ // i == 0 && j == 7 || i == 7 && j == 0
+            if(pirata_i == 0 && pirata_j == 7 || pirata_i == 7 && pirata_j == 0){
+                printf("Ten cuidado, estan en un puente colgante. Sali de ahi\n");
+            }
+            else{
+                printf("Te has caido al agua, has perdido\n");
+                break;
+            }
         }
-        if(pirata_i == tesoro_i && pirata_j == tesoro_j){
+        else if(pirata_i == tesoro_i && pirata_j == tesoro_j){
             encontrado = !encontrado;
             break;
         }
