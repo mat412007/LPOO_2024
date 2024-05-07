@@ -58,6 +58,7 @@ int main(int argc, char *argv[]){
     printf("El tesoro esta en %d y %d\n", tesoro_i, tesoro_j);
     printf("Tenes 50 intentos para encontrar el tesoro\n");
     while(intentos != 0){
+        printf("Te quedan %d intentos\n", intentos);
         printf("A donde quieres mover el pirata?\n");
         printf("- Norte(N)\n- Sur(S)\n- Este(E)\n- Oeste(O)\n");
         scanf(" %c", &movimiento);
@@ -73,11 +74,12 @@ int main(int argc, char *argv[]){
         else if(movimiento == 'O'){
             pirata_j -= 1;
         }
+        dibujarTablero(pirata_i, pirata_j);
+        printf("------------------------------------------------------------\n");
         if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){
             printf("Te has caido al agua, has perdido");
             break;
         }
-        dibujarTablero(pirata_i, pirata_j);
         if(pirata_i == tesoro_i && pirata_j == tesoro_j){
             printf("Encontraste el tesoro\n");
             break;
@@ -85,5 +87,6 @@ int main(int argc, char *argv[]){
         else if(intentos == 0){
             printf("Usaste todos tus intentos. Has perdido");
         }
+        intentos--;
     }
 }
