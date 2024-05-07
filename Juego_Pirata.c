@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
 
 void dibujarTablero(int x, int y){
@@ -55,6 +56,7 @@ int main(int argc, char *argv[]){
     
     int intentos = 50;
     char movimiento;
+    bool encontrado = false;
     printf("El tesoro esta en %d y %d\n", tesoro_i, tesoro_j);
     printf("Tenes 50 intentos para encontrar el tesoro\n");
     while(intentos != 0){
@@ -81,12 +83,15 @@ int main(int argc, char *argv[]){
             break;
         }
         if(pirata_i == tesoro_i && pirata_j == tesoro_j){
-            printf("Encontraste el tesoro\n");
+            encontrado = !encontrado;
             break;
         }
-        else if(intentos == 0){
-            printf("Usaste todos tus intentos. Has perdido");
-        }
         intentos--;
+    }
+    if(encontrado){
+        printf("Ganaste, has encontrado el tesoro\n");
+    }
+    else if(intentos == 0){
+        printf("Usaste todos tus intentos. Has perdido\n");
     }
 }
