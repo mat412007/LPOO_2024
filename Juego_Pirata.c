@@ -4,8 +4,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-void dibujarTablero(int x, int y){
-    char tablero[8][8];
+void dibujarTablero(char tablero[8][8],int x, int y){
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 8; j++){
             if(i == 0 && j == 7 || i == 7 && j == 0){
@@ -29,16 +28,16 @@ void dibujarTablero(int x, int y){
 }
 
 int main(int argc, char *argv[]){
+    char tablero[8][8];
     printf("\n");
     srand(time(NULL));
     // Declaramos la ubicacion del Pirata
     int pirata_i = 1 + rand() % 6;
     int pirata_j = 1 + rand() % 6;
-    // Creamos el tablero
-    dibujarTablero(pirata_i, pirata_j);
     // Declaramos la ubicacion del tesoro
     int tesoro_i = 1 + rand() % 6;
     int tesoro_j = 1 + rand() % 6;
+    dibujarTablero(tablero, pirata_i, pirata_j);
     if(pirata_i == tesoro_i && pirata_j == tesoro_j){ // Me aseguro de que el tesoro y el pirata nunca aparezcan en la misma posicion
         if(pirata_i < 4){
             pirata_i++;
@@ -57,7 +56,6 @@ int main(int argc, char *argv[]){
     int intentos = 50;
     char movimiento[2];
     bool encontrado = false;
-    printf("El tesoro esta en %d y %d\n", tesoro_i, tesoro_j);
     printf("Tenes 50 intentos para encontrar el tesoro\n");
     while(intentos != 0){
         printf("Te quedan %d intentos\n", intentos);
@@ -96,7 +94,7 @@ int main(int argc, char *argv[]){
             printf("Acabas de insertar un movimiento invalido. Intentalo de nuevo\n");
             intentos++;
         }
-        dibujarTablero(pirata_i, pirata_j);
+        dibujarTablero(tablero, pirata_i, pirata_j);
         printf("------------------------------------------------------------\n");
         if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){ // i == 0 && j == 7 || i == 7 && j == 0
             if(pirata_i == 0 && pirata_j == 7 || pirata_i == 7 && pirata_j == 0){
