@@ -4,8 +4,8 @@
 #include <stdbool.h>
 #include <time.h>
 
-void dibujarTablero(char tablero[8][8],int x, int y){
-    for(int i = 0; i < 8; i++){
+void dibujarTablero(char tablero[8][8],int x, int y){ // Funcion para dibujar el tablero
+    for(int i = 0; i < 8; i++){ // Bucles para llenar el tablero segun corresponda
         for(int j = 0; j < 8; j++){
             if(i == 0 && j == 7 || i == 7 && j == 0){
                 tablero[i][j] = 'P';
@@ -19,7 +19,7 @@ void dibujarTablero(char tablero[8][8],int x, int y){
         }
     }
     tablero[x][y] = 'X';
-    for(int i = 0; i < 8; i++){
+    for(int i = 0; i < 8; i++){ // Bucle para imprimir el tablero ya hecho
         for(int j = 0; j < 8; j++){
             printf("%c\t", tablero[i][j]);
         }
@@ -37,6 +37,7 @@ int main(int argc, char *argv[]){
     // Declaramos la ubicacion del tesoro
     int tesoro_i = 1 + rand() % 6;
     int tesoro_j = 1 + rand() % 6;
+    // Dibujamos el tablero de introduccion
     dibujarTablero(tablero, pirata_i, pirata_j);
     if(pirata_i == tesoro_i && pirata_j == tesoro_j){ // Me aseguro de que el tesoro y el pirata nunca aparezcan en la misma posicion
         if(pirata_i < 4){
@@ -57,7 +58,7 @@ int main(int argc, char *argv[]){
     char movimiento[2];
     bool encontrado = false;
     printf("Tenes 50 intentos para encontrar el tesoro\n");
-    while(intentos != 0){
+    while(intentos != 0){ // Bucle del juego con 50 intentos
         printf("Te quedan %d intentos\n", intentos);
         printf("A donde quieres mover el pirata?\n");
         printf("- Norte(N)\n- Sur(S)\n- Este(E)\n- Oeste(O)\n- Noretse(NE)\n- Noroeste(NO)\n- Sureste(SE)\n- Suroeste(SO)\n");
@@ -96,7 +97,7 @@ int main(int argc, char *argv[]){
         }
         dibujarTablero(tablero, pirata_i, pirata_j);
         printf("------------------------------------------------------------\n");
-        if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){ // i == 0 && j == 7 || i == 7 && j == 0
+        if(pirata_i == 0 || pirata_j == 0 || pirata_i == 7 || pirata_j == 7){ 
             if(pirata_i == 0 && pirata_j == 7 || pirata_i == 7 && pirata_j == 0){
                 printf("Ten cuidado, estan en un puente colgante. Sali de ahi\n");
             }
@@ -110,7 +111,7 @@ int main(int argc, char *argv[]){
             break;
         }
         intentos--;
-    }
+    } // Mensaje de victoria o derrota
     if(encontrado){
         printf("Ganaste, has encontrado el tesoro\n");
     }
