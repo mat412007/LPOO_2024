@@ -57,7 +57,10 @@ int main(int argc, char *argv[]){
     int intentos = 50;
     char movimiento[2];
     bool encontrado = false;
-    printf("Tenes 50 intentos para encontrar el tesoro\n");
+    printf("Hay un tesoro escondido en la isla\n");
+    printf("Tenes 50 intentos para encontrarlo\n");
+    printf("Si te caes al agua pierdes\n");
+    printf("Los puentes actuaran como soporte adicional\n");
     while(intentos != 0){ // Bucle del juego con 50 intentos
         printf("Te quedan %d intentos\n", intentos);
         printf("A donde quieres mover el pirata?\n");
