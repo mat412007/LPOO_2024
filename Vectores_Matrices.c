@@ -53,5 +53,48 @@ int main(int argc, char *argv[]){
                 numero_dia += dias_meses2[i];
             }
             printf("\nEl dia %d del mes %s es el dia %d",  dia_mes, meses2[mes2 - 1], numero_dia - (dias_meses2[mes2 - 1] - dia_mes));
+        case 5:
+            printf("\nInserta un numero de mes\n> ");
+            int dias_meses3[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            char *meses3[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+            int mes3;
+            scanf("%d", &mes3);
+            printf("Inserta un numero de dia de mes\n> ");
+            int dia_mes2;
+            scanf("%d", &dia_mes2);  
+            int fin = 0;
+            for(int i = mes3; i < 12; i++){
+                fin += dias_meses3[i];
+            }       
+            printf("\nEl dia %d del mes %s es cuando hay %d dias restantes",  dia_mes2, meses3[mes3 - 1], fin + (dias_meses3[mes3 - 1]) - dia_mes2);   
+        case 6:
+            printf("\nInserta 10 numeros\n");
+            int numeros3[10];
+            for(int i = 0; i < 10; i++){
+                printf("Numero N%d: ", i + 1);
+                scanf("%d", &numeros3[i]);
+            }
+            printf("\n[ ");
+            for(int i = 9; i >= 0; i--){
+                printf("%d ", numeros3[i]);
+            }
+            printf("]");
+        case 7:
+            printf("\nIngresa 10 numeros\n");
+            float numeros4[10];
+            promedio = 0;
+            for(int i = 0; i < 10; i++){
+                printf("Numero N%d: ", i + 1);
+                scanf("%f", &numeros4[i]);
+                promedio += numeros4[i];
+            }
+            printf("\nLa media es %.2f", promedio/10);
+            printf("\n[ ");
+            for(int i = 0; i < 10; i++){
+                if(numeros4[i] > promedio/10){
+                    printf("%.0f ", numeros4[i]);
+                }
+            }
+            printf("]");
     }
 }
