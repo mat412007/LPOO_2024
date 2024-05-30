@@ -181,6 +181,32 @@ int main(int argc, char *argv[]){
             else{
                 printf("Los vectores no son linealmente dependientes");
             }
-            
+        case 13:
+            printf("\nUna matriz traspuesta\n");
+            int matriz[2][2];
+            int traspuesta[2][2];
+            for(int i = 0; i < 2; i++){
+                for(int j = 0; j < 2; j++){
+                    printf("Inserta el valor de la posicion [%d][%d]: ", i, j);
+                    scanf("%d", &matriz[i][j]);
+                    traspuesta[j][i] = matriz[i][j];
+                }
+            }    
+            printf("\n[ ");
+            for(int i = 0; i < 2; i++){
+                for(int j = 0; j < 2; j++){
+                    printf("%d ", matriz[i][j]);
+                }
+                printf("\n  ");
+            }
+            printf("]");
+            printf("\n\n[ ");
+            for(int i = 0; i < 2; i++){
+                for(int j = 0; j < 2; j++){
+                    printf("%d ", traspuesta[i][j]);
+                }
+                printf("\n  ");
+            }
+            printf("]");
     }
 }
