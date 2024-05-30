@@ -96,5 +96,48 @@ int main(int argc, char *argv[]){
                 }
             }
             printf("]");
+        case 8:
+            printf("\nIngresa 10 numeros\n");
+            int mayor;
+            for(int i = 0; i < 10; i++){
+                printf("Numero N%d: ", i + 1);
+                scanf("%f", &numeros4[i]);
+                promedio += numeros4[i];
+                mayor = numeros4[i];
+            } 
+            printf("\n[ ");
+            for(int i = 0; i < 10; i++){
+                if(numeros4[i] > mayor){
+                    mayor = numeros4[i];
+                }
+                printf("%.0f ", numeros4[i]);
+            }
+            printf("]\n");
+            printf("El mayor es %d", mayor);
+        case 9:
+            printf("\nCalculemos la diferencia de dos vectores\n");
+            int vectorA[2];
+            int vectorB[2];
+            int D[2];
+            printf("Inserta las coordenadas del primer vector: ");
+            scanf("%d %d", &vectorA[0], &vectorA[1]);
+            printf("Inserta las coordenadas del segundo vector: ");
+            scanf("%d %d", &vectorB[0], &vectorB[1]);
+            D[0] = vectorA[0] - vectorB[0];
+            D[1] = vectorA[1] - vectorB[1];
+            printf("A = (%d, %d)\nB = (%d, %d)\n", vectorA[0], vectorA[1], vectorB[0], vectorB[1]);
+            printf("La diferencia es: D = (%d, %d)", D[0], D[1]);
+        case 10:
+            printf("\nCalculemos el producto escalar de dos vectores\n");
+            int vectorX[3];
+            int vectorY[3];
+            int product_esc;
+            printf("Inserta las coordenas del vector X: ");
+            scanf("%d %d %d", &vectorX[0], &vectorX[1], &vectorX[2]);
+            printf("Inserta las coordenas del vector Y: ");
+            scanf("%d %d %d", &vectorY[0], &vectorY[1], &vectorY[2]);
+            product_esc = vectorX[0]*vectorY[0] + vectorX[1]*vectorY[1] + vectorX[2]*vectorY[2];
+            printf("X = (%d, %d, %d)\nY = (%d, %d, %d)\n", vectorX[0], vectorX[1], vectorX[2], vectorY[0], vectorY[1], vectorY[2]);
+            printf("El producto escalar es: %d", product_esc);
     }
 }
