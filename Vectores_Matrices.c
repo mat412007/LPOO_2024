@@ -165,5 +165,15 @@ int main(int argc, char *argv[]){
             printf("El producto vectorial es: (%d, %d, %d)", product_vec[0], product_vec[1], product_vec[2]);
             break;
         case 12:
+            printf("\nVerifiquemos si dos vectores son linealmente dependientes\n");
+            int vectorV[2];
+            int vectorW[2];
+            int dependientes;
+            printf("Inserta las coordenadas del vector V: ");
+            scanf("%d %d", &vectorV[0], &vectorV[1]);
+            printf("Inserta las coordenadas del vector W: ");
+            scanf("%d %d", &vectorW[0], &vectorW[1]);
+            dependientes = ;
+            
     }
 }
