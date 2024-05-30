@@ -173,7 +173,14 @@ int main(int argc, char *argv[]){
             scanf("%d %d", &vectorV[0], &vectorV[1]);
             printf("Inserta las coordenadas del vector W: ");
             scanf("%d %d", &vectorW[0], &vectorW[1]);
-            dependientes = ;
+            dependientes = vectorV[0]*vectorW[1] - vectorV[1]*vectorW[0];
+            printf("V = (%d, %d)\nW = (%d, %d)\n", vectorV[0], vectorV[1], vectorW[0], vectorW[1]);
+            if(dependientes == 0){
+                printf("Los vectores son linealmente dependientes");
+            }
+            else{
+                printf("Los vectores no son linealmente dependientes");
+            }
             
     }
 }
