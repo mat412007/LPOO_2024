@@ -192,21 +192,56 @@ int main(int argc, char *argv[]){
                     traspuesta[j][i] = matriz[i][j];
                 }
             }    
-            printf("\n[ ");
+            printf("\nMatriz normal:\n");
             for(int i = 0; i < 2; i++){
+                printf("[ ");
                 for(int j = 0; j < 2; j++){
                     printf("%d ", matriz[i][j]);
                 }
-                printf("\n  ");
+                printf("]\n");
             }
-            printf("]");
-            printf("\n\n[ ");
+            printf("\nMatriz traspuesta:\n");
             for(int i = 0; i < 2; i++){
+                printf("[ ");
                 for(int j = 0; j < 2; j++){
                     printf("%d ", traspuesta[i][j]);
                 }
-                printf("\n  ");
+                printf("]\n");
             }
-            printf("]");
+        case 14:
+            printf("\nEl determinante de una matriz 3x3\n");
+            int matriz3x3[3][3];
+            for(int x = 0; x < 3; x++){
+                for(int y = 0; y < 3; y++){
+                    printf("Inserta el valor de posicion [%d][%d]: ", x, y);
+                        scanf("%d", &matriz3x3[x][y]);
+                }
+            }
+            printf("\n");
+            for(int x = 0; x < 3; x++){
+                printf("[ ");
+                for(int y = 0; y < 3; y++){
+                        printf("%d ", matriz3x3[x][y]);
+                }
+                printf("]\n");
+            }
+            float determinante = matriz3x3[0][0]*((matriz3x3[1][1]*matriz3x3[2][2]) - (matriz3x3[1][2]*matriz3x3[2][1])) - matriz3x3[0][1]*((matriz3x3[1][0]*matriz3x3[2][2]) - (matriz3x3[1][2]*matriz3x3[2][0])) + matriz3x3[0][2]*((matriz3x3[1][0]*matriz3x3[2][1]) - (matriz3x3[1][1]*matriz3x3[2][0]));
+            printf("\nEl determinante de la matriz es: %.0f", determinante);
+        case 15:
+            printf("\nLa matriz adjunta de una matriz 3x3:\n");
+            for(int x = 0; x < 3; x++){
+                for(int y = 0; y < 3; y++){
+                    printf("Inserta el valor de posicion [%d][%d]: ", x, y);
+                        scanf("%d", &matriz3x3[x][y]);
+                }
+            }
+            printf("\n");
+            for(int x = 0; x < 3; x++){
+                printf("[ ");
+                for(int y = 0; y < 3; y++){
+                        printf("%d ", matriz3x3[x][y]);
+                }
+                printf("]\n");
+            }
     }
 }
