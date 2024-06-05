@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int main(int argc, char *argv[]){
     int ejercicio;
@@ -181,6 +182,7 @@ int main(int argc, char *argv[]){
             else{
                 printf("Los vectores no son linealmente dependientes");
             }
+            break;
         case 13:
             printf("\nUna matriz traspuesta\n");
             int matriz[2][2];
@@ -208,40 +210,87 @@ int main(int argc, char *argv[]){
                 }
                 printf("]\n");
             }
+            break;
         case 14:
             printf("\nEl determinante de una matriz 3x3\n");
             int matriz3x3[3][3];
             for(int x = 0; x < 3; x++){
                 for(int y = 0; y < 3; y++){
                     printf("Inserta el valor de posicion [%d][%d]: ", x, y);
-                        scanf("%d", &matriz3x3[x][y]);
+                    scanf("%d", &matriz3x3[x][y]);
                 }
             }
             printf("\n");
             for(int x = 0; x < 3; x++){
                 printf("[ ");
                 for(int y = 0; y < 3; y++){
-                        printf("%d ", matriz3x3[x][y]);
+                    printf("%d ", matriz3x3[x][y]);
                 }
                 printf("]\n");
             }
             float determinante = matriz3x3[0][0]*((matriz3x3[1][1]*matriz3x3[2][2]) - (matriz3x3[1][2]*matriz3x3[2][1])) - matriz3x3[0][1]*((matriz3x3[1][0]*matriz3x3[2][2]) - (matriz3x3[1][2]*matriz3x3[2][0])) + matriz3x3[0][2]*((matriz3x3[1][0]*matriz3x3[2][1]) - (matriz3x3[1][1]*matriz3x3[2][0]));
             printf("\nEl determinante de la matriz es: %.0f", determinante);
+            break;
         case 15:
             printf("\nLa matriz adjunta de una matriz 3x3:\n");
             for(int x = 0; x < 3; x++){
                 for(int y = 0; y < 3; y++){
                     printf("Inserta el valor de posicion [%d][%d]: ", x, y);
-                        scanf("%d", &matriz3x3[x][y]);
+                    scanf("%d", &matriz3x3[x][y]);
                 }
             }
             printf("\n");
             for(int x = 0; x < 3; x++){
                 printf("[ ");
                 for(int y = 0; y < 3; y++){
-                        printf("%d ", matriz3x3[x][y]);
+                    printf("%d ", matriz3x3[x][y]);
                 }
                 printf("]\n");
             }
+            printf("\n");
+            float matriz_adjunta[3][3];
+            float submatriz[2][2];
+            int subi;
+            int subj;
+            for(int i = 0; i < 3; i++){
+                for(int j = 0; j < 3; j++){
+                    subi = 0;
+                    for(int x = 0; x < 3; x++){
+                        if(i == x){
+                            continue;
+                        }
+                        subj = 0;
+                        for(int y = 0; y < 3; y++){
+                            if(j == y){
+                                continue;
+                            }
+                            submatriz[subi][subj] = matriz3x3[x][y];
+                            subj++;
+                        }
+                        subi++;
+                    }         
+                    matriz_adjunta[i][j] = (submatriz[0][0] * submatriz[1][1]) - (submatriz[0][1] * submatriz[1][0]);
+                    if((i+j+2) % 2 != 0){
+                        matriz_adjunta[i][j] *= -1;
+                    }
+                    for(int m = 0; m < 2; m++){
+                        printf("[ ");
+                        for(int n = 0; n < 2; n++){
+                            printf("%.0f ", submatriz[m][n]);
+                        }
+                        printf("]\n");
+                    }
+                    printf("\n");
+                }
+            }
+            printf("\nLa matriz adjunta es:\n");
+            for(int x = 0; x < 3; x++){
+                printf("[ ");
+                for(int y = 0; y < 3; y++){
+                    printf("%.0f ", matriz_adjunta[x][y]);
+                }
+                printf("]\n");
+            }
+
     }
 }
