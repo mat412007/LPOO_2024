@@ -2,6 +2,32 @@
 #include <stdlib.h>
 #include <math.h>
 
+void imprimir_matriz_simple(int columnas, int matriz[columnas]){
+    printf("[ ");
+    for(int i = 0; i < columnas; i++){
+        printf("%d ", matriz[i]);
+    }
+    printf("]\n");
+}
+
+void imprimir_matriz(int filas, int columnas, int matriz[filas][columnas]){
+    for(int x = 0; x < filas; x++){
+        printf("[ ");
+        for(int y = 0; y < columnas; y++){
+            printf("%d ", matriz[x][y]);
+        }
+        printf("]\n");
+    }
+}
+
+void orden_inverso(int columnas, int matriz[columnas]){
+    printf("[ ");
+    for(int i = columnas-1; i >= 0; i--){
+        printf("%d ", matriz[i]);
+    }
+    printf("]\n");
+}
+
 int main(int argc, char *argv[]){
     int ejercicio;
     printf("Que ejercicio deseas corregir?\n> ");
@@ -16,11 +42,9 @@ int main(int argc, char *argv[]){
                 scanf("%d", &numeros[i]);
                 promedio += numeros[i];
             }
-            printf("\n[ ");
-            for(int i = 0; i < 4; i++){
-                printf("%d ", numeros[i]);
-            }
-            printf("]\nMedia aritmetica = %.2f", promedio/4);
+            printf("\n");
+            imprimir_matriz_simple(4, numeros);
+            printf("Media aritmetica = %.2f", promedio/4);
             break;
         case 2:
             printf("\nInserta 5 numeros\n");
@@ -29,18 +53,17 @@ int main(int argc, char *argv[]){
                 printf("Numero N%d: ", i + 1);
                 scanf("%d", &numeros2[i]);
             }
-            printf("\n[ ");
-            for(int i = 4; i >= 0; i--){
-                printf("%d ", numeros2[i]);
-            }
-            printf("]");
+            printf("Orden original:\n");
+            imprimir_matriz_simple(5, numeros2);
+            printf("Orden invertido:\n");
+            orden_inverso(5, numeros2);
             break;
         case 3:
             printf("\nInserta un numero de mes\n> ");
-            int dias_meses[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-            char *meses[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
             int mes;
             scanf("%d", &mes);
+            int dias_meses[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            char *meses[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
             printf("\nEl mes de %s tiene %d dias", meses[mes - 1], dias_meses[mes - 1]);
             break;
         case 4:
