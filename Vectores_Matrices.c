@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 
+void llenar_matriz_simple(int columnas, int matriz[columnas]){
+    for(int i = 0; i < columnas; i++){
+        printf("Numero N%d: ", i + 1);
+        scanf("%d", &matriz[i]);
+    }
+}
+
 void imprimir_matriz_simple(int columnas, int matriz[columnas]){
     printf("[ ");
     for(int i = 0; i < columnas; i++){
