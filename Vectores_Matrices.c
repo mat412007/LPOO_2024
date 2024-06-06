@@ -17,6 +17,15 @@ void imprimir_matriz_simple(int columnas, int matriz[columnas]){
     printf("]\n");
 }
 
+void llenar_matriz(int filas, int columnas, int matriz[filas][columnas]){
+    for(int i = 0; i < filas; i++){
+        for(int j = 0; j < columnas; j++){
+            printf("Inserta el valor de la posicion [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    } 
+}
+
 void imprimir_matriz(int filas, int columnas, int matriz[filas][columnas]){
     for(int x = 0; x < filas; x++){
         printf("[ ");
@@ -29,8 +38,8 @@ void imprimir_matriz(int filas, int columnas, int matriz[filas][columnas]){
 
 void orden_inverso(int columnas, int matriz[columnas]){
     printf("[ ");
-    for(int i = columnas-1; i >= 0; i--){
-        printf("%d ", matriz[i]);
+    for(int i = columnas; i > 0; i--){
+        printf("%d ", matriz[i-1]);
     }
     printf("]\n");
 }
