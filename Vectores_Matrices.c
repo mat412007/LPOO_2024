@@ -2,44 +2,44 @@
 #include <stdlib.h>
 #include <math.h>
 
-void llenar_matriz_simple(int columnas, int matriz[columnas]){
+void llenar_matriz_simple(int columnas, float matriz[columnas]){
     for(int i = 0; i < columnas; i++){
         printf("Numero N%d: ", i + 1);
-        scanf("%d", &matriz[i]);
+        scanf("%f", &matriz[i]);
     }
 }
 
-void imprimir_matriz_simple(int columnas, int matriz[columnas]){
+void imprimir_matriz_simple(int columnas, float matriz[columnas]){
     printf("[ ");
     for(int i = 0; i < columnas; i++){
-        printf("%d ", matriz[i]);
+        printf("%.2f ", matriz[i]);
     }
     printf("]\n");
 }
 
-void llenar_matriz(int filas, int columnas, int matriz[filas][columnas]){
+void llenar_matriz(int filas, int columnas, float matriz[filas][columnas]){
     for(int i = 0; i < filas; i++){
         for(int j = 0; j < columnas; j++){
             printf("Inserta el valor de la posicion [%d][%d]: ", i, j);
-            scanf("%d", &matriz[i][j]);
+            scanf("%f", &matriz[i][j]);
         }
     } 
 }
 
-void imprimir_matriz(int filas, int columnas, int matriz[filas][columnas]){
+void imprimir_matriz(int filas, int columnas, float matriz[filas][columnas]){
     for(int x = 0; x < filas; x++){
         printf("[ ");
         for(int y = 0; y < columnas; y++){
-            printf("%d ", matriz[x][y]);
+            printf("%.2f ", matriz[x][y]);
         }
         printf("]\n");
     }
 }
 
-void orden_inverso(int columnas, int matriz[columnas]){
+void orden_inverso(int columnas, float matriz[columnas]){
     printf("[ ");
     for(int i = columnas; i > 0; i--){
-        printf("%d ", matriz[i-1]);
+        printf("%.2f ", matriz[i-1]);
     }
     printf("]\n");
 }
@@ -51,24 +51,18 @@ int main(int argc, char *argv[]){
     switch(ejercicio){
         case 1:
             printf("\nInserta 4 numeros\n");
-            int numeros[4];
+            float numeros[4];
             float promedio = 0;
-            for(int i = 0; i < 4; i++){
-                printf("Numero N%d: ", i + 1);
-                scanf("%d", &numeros[i]);
-                promedio += numeros[i];
-            }
+            llenar_matriz_simple(4, numeros);
             printf("\n");
             imprimir_matriz_simple(4, numeros);
+            for(int i = 0; i < 4; i++) promedio += numeros[i];
             printf("Media aritmetica = %.2f", promedio/4);
             break;
         case 2:
             printf("\nInserta 5 numeros\n");
-            int numeros2[5];
-            for(int i = 0; i < 5; i++){
-                printf("Numero N%d: ", i + 1);
-                scanf("%d", &numeros2[i]);
-            }
+            float numeros2[5];
+            llenar_matriz_simple(5, numeros2);
             printf("Orden original:\n");
             imprimir_matriz_simple(5, numeros2);
             printf("Orden invertido:\n");
@@ -114,41 +108,35 @@ int main(int argc, char *argv[]){
             break;
         case 6:
             printf("\nInserta 10 numeros\n");
-            int numeros3[10];
-            for(int i = 0; i < 10; i++){
-                printf("Numero N%d: ", i + 1);
-                scanf("%d", &numeros3[i]);
-            }
-            printf("\n[ ");
-            for(int i = 9; i >= 0; i--){
-                printf("%d ", numeros3[i]);
-            }
-            printf("]");
+            float numeros3[10];
+            llenar_matriz_simple(10, numeros3);
+            printf("\nOrden original:\n");
+            imprimir_matriz_simple(10, numeros3);
+            printf("\nOrden invertido:\n");
+            orden_inverso(10, numeros3);
             break;
         case 7:
             printf("\nIngresa 10 numeros\n");
             float numeros4[10];
             promedio = 0;
+            llenar_matriz_simple(10, numeros4);
             for(int i = 0; i < 10; i++){
-                printf("Numero N%d: ", i + 1);
-                scanf("%f", &numeros4[i]);
                 promedio += numeros4[i];
             }
             printf("\nLa media es %.2f", promedio/10);
             printf("\n[ ");
             for(int i = 0; i < 10; i++){
                 if(numeros4[i] > promedio/10){
-                    printf("%.0f ", numeros4[i]);
+                    printf("%.2f ", numeros4[i]);
                 }
             }
             printf("]");
             break;
         case 8:
             printf("\nIngresa 10 numeros\n");
-            int mayor;
+            float mayor;
+            llenar_matriz_simple(10, numeros4);
             for(int i = 0; i < 10; i++){
-                printf("Numero N%d: ", i + 1);
-                scanf("%f", &numeros4[i]);
                 promedio += numeros4[i];
                 mayor = numeros4[i];
             } 
@@ -157,10 +145,10 @@ int main(int argc, char *argv[]){
                 if(numeros4[i] > mayor){
                     mayor = numeros4[i];
                 }
-                printf("%.0f ", numeros4[i]);
+                printf("%.2f ", numeros4[i]);
             }
             printf("]\n");
-            printf("El mayor es %d", mayor);
+            printf("El mayor es %.2f", mayor);
             break;
         case 9:
             printf("\nCalculemos la diferencia de dos vectores\n");
@@ -224,68 +212,33 @@ int main(int argc, char *argv[]){
             break;
         case 13:
             printf("\nUna matriz traspuesta\n");
-            int matriz[2][2];
-            int traspuesta[2][2];
+            float matriz[2][2];
+            float traspuesta[2][2];
+            llenar_matriz(2, 2, matriz);
             for(int i = 0; i < 2; i++){
                 for(int j = 0; j < 2; j++){
-                    printf("Inserta el valor de la posicion [%d][%d]: ", i, j);
-                    scanf("%d", &matriz[i][j]);
                     traspuesta[j][i] = matriz[i][j];
                 }
             }    
-            printf("\nMatriz normal:\n");
-            for(int i = 0; i < 2; i++){
-                printf("[ ");
-                for(int j = 0; j < 2; j++){
-                    printf("%d ", matriz[i][j]);
-                }
-                printf("]\n");
-            }
-            printf("\nMatriz traspuesta:\n");
-            for(int i = 0; i < 2; i++){
-                printf("[ ");
-                for(int j = 0; j < 2; j++){
-                    printf("%d ", traspuesta[i][j]);
-                }
-                printf("]\n");
-            }
+            printf("\n\nMatriz normal:\n");
+            imprimir_matriz(2, 2, matriz);
+            printf("\n\nMatriz traspuesta:\n");
+            imprimir_matriz(2, 2, traspuesta);
             break;
         case 14:
             printf("\nEl determinante de una matriz 3x3\n");
-            int matriz3x3[3][3];
-            for(int x = 0; x < 3; x++){
-                for(int y = 0; y < 3; y++){
-                    printf("Inserta el valor de posicion [%d][%d]: ", x, y);
-                    scanf("%d", &matriz3x3[x][y]);
-                }
-            }
+            float matriz3x3[3][3];
+            llenar_matriz(3, 3, matriz3x3);
             printf("\n");
-            for(int x = 0; x < 3; x++){
-                printf("[ ");
-                for(int y = 0; y < 3; y++){
-                    printf("%d ", matriz3x3[x][y]);
-                }
-                printf("]\n");
-            }
+            imprimir_matriz(3, 3, matriz3x3);
             float determinante = matriz3x3[0][0]*((matriz3x3[1][1]*matriz3x3[2][2]) - (matriz3x3[1][2]*matriz3x3[2][1])) - matriz3x3[0][1]*((matriz3x3[1][0]*matriz3x3[2][2]) - (matriz3x3[1][2]*matriz3x3[2][0])) + matriz3x3[0][2]*((matriz3x3[1][0]*matriz3x3[2][1]) - (matriz3x3[1][1]*matriz3x3[2][0]));
-            printf("\nEl determinante de la matriz es: %.0f", determinante);
+            printf("\n\nEl determinante de la matriz es: %.2f", determinante);
             break;
         case 15:
             printf("\nLa matriz adjunta de una matriz 3x3:\n");
-            for(int x = 0; x < 3; x++){
-                for(int y = 0; y < 3; y++){
-                    printf("Inserta el valor de posicion [%d][%d]: ", x, y);
-                    scanf("%d", &matriz3x3[x][y]);
-                }
-            }
+            llenar_matriz(3, 3, matriz3x3);
             printf("\n");
-            for(int x = 0; x < 3; x++){
-                printf("[ ");
-                for(int y = 0; y < 3; y++){
-                    printf("%d ", matriz3x3[x][y]);
-                }
-                printf("]\n");
-            }
+            imprimir_matriz(3, 3, matriz3x3);
             printf("\n");
             float matriz_adjunta[3][3];
             float submatriz[2][2];
@@ -315,7 +268,7 @@ int main(int argc, char *argv[]){
                     for(int m = 0; m < 2; m++){
                         printf("[ ");
                         for(int n = 0; n < 2; n++){
-                            printf("%.0f ", submatriz[m][n]);
+                            printf("%.2f ", submatriz[m][n]);
                         }
                         printf("]\n");
                     }
@@ -326,7 +279,7 @@ int main(int argc, char *argv[]){
             for(int x = 0; x < 3; x++){
                 printf("[ ");
                 for(int y = 0; y < 3; y++){
-                    printf("%.0f ", matriz_adjunta[x][y]);
+                    printf("%.2f ", matriz_adjunta[x][y]);
                 }
                 printf("]\n");
             }
