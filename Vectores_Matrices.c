@@ -95,6 +95,14 @@ void adjunta(float matriz[3][3], float adjunta[3][3]){
             }
 }
 
+void inversa(float matriz_adjunta[3][3], float determinante, float matriz_inversa[3][3]){
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            matriz_inversa[i][j] = (1 / determinante) * matriz_adjunta[i][j]; 
+        }
+    }
+}
+
 int main(int argc, char *argv[]){
     int ejercicio;
     int dias_meses[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -107,6 +115,8 @@ int main(int argc, char *argv[]){
     int vectorY[3];
     float matriz2x2[2][2];
     float matriz3x3[3][3];
+    float determinante3x3;
+    float matriz_adjunta[3][3];
     printf("Que ejercicio deseas corregir?\n> ");
     scanf("%d", &ejercicio);
     switch(ejercicio){
@@ -264,7 +274,7 @@ int main(int argc, char *argv[]){
             llenar_matriz(3, 3, matriz3x3);
             printf("\n");
             imprimir_matriz(3, 3, matriz3x3);
-            float determinante3x3 = determinante(matriz3x3);
+            determinante3x3 = determinante(matriz3x3);
             printf("\nEl determinante de la matriz es: %.2f", determinante3x3);
             break;
         case 15:
@@ -272,11 +282,24 @@ int main(int argc, char *argv[]){
             llenar_matriz(3, 3, matriz3x3);
             printf("\n");
             imprimir_matriz(3, 3, matriz3x3);
-            printf("\n");
-            float matriz_adjunta[3][3];
+            printf("\nLa matriz adjunta es:\n");
             adjunta(matriz3x3, matriz_adjunta);
-            printf("La matriz adjunta es:\n");
             imprimir_matriz(3, 3, matriz_adjunta);
-
+            break;
+        case 16:
+            printf("\nLa matriz inversa de una matriz 3x3:\n");
+            llenar_matriz(3, 3, matriz3x3);
+            printf("\n");
+            imprimir_matriz(3, 3, matriz3x3);
+            if(determinante(matriz3x3) == 0){
+                printf("Lo sentimos. El determinante de esta matriz es igual a 0, por lo tanto no se puede invertir\n");
+                break;
+            }
+            float matriz_inversa[3][3];
+            determinante3x3 = determinante(matriz3x3);
+            adjunta(matriz3x3, matriz_adjunta);
+            inversa(matriz_adjunta, determinante3x3, matriz_inversa);
+            printf("\nLa matriz inversa es:\n");
+            imprimir_matriz(3, 3, matriz_inversa);
     }
 }
