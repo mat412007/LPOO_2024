@@ -12,7 +12,7 @@ void llenar_matriz_simple(int columnas, float matriz[columnas]){
 void imprimir_matriz_simple(int columnas, float matriz[columnas]){
     printf("[ ");
     for(int i = 0; i < columnas; i++){
-        printf("%.2f ", matriz[i]);
+        printf("%.0f ", matriz[i]);
     }
     printf("]\n");
 }
@@ -30,7 +30,7 @@ void imprimir_matriz(int filas, int columnas, float matriz[filas][columnas]){
     for(int x = 0; x < filas; x++){
         printf("[ ");
         for(int y = 0; y < columnas; y++){
-            printf("%.2f ", matriz[x][y]);
+            printf("%.0f ", matriz[x][y]);
         }
         printf("]\n");
     }
@@ -39,13 +39,20 @@ void imprimir_matriz(int filas, int columnas, float matriz[filas][columnas]){
 void orden_inverso(int columnas, float matriz[columnas]){
     printf("[ ");
     for(int i = columnas; i > 0; i--){
-        printf("%.2f ", matriz[i-1]);
+        printf("%.0f ", matriz[i-1]);
     }
     printf("]\n");
 }
 
 int main(int argc, char *argv[]){
     int ejercicio;
+    int dias_meses[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    char *meses[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+    int dia_mes;
+    float numeros[10];
+    int vectorX[2];
+    int vectorY[2];
+    float matriz3x3[3][3];
     printf("Que ejercicio deseas corregir?\n> ");
     scanf("%d", &ejercicio);
     switch(ejercicio){
@@ -63,71 +70,59 @@ int main(int argc, char *argv[]){
             printf("\nInserta 5 numeros\n");
             float numeros2[5];
             llenar_matriz_simple(5, numeros2);
-            printf("Orden original:\n");
+            printf("\nOrden original:\n");
             imprimir_matriz_simple(5, numeros2);
-            printf("Orden invertido:\n");
+            printf("\nOrden invertido:\n");
             orden_inverso(5, numeros2);
             break;
         case 3:
             printf("\nInserta un numero de mes\n> ");
             int mes;
             scanf("%d", &mes);
-            int dias_meses[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-            char *meses[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
             printf("\nEl mes de %s tiene %d dias", meses[mes - 1], dias_meses[mes - 1]);
             break;
         case 4:
             printf("\nInserta un numero de mes\n> ");
-            int dias_meses2[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-            char *meses2[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-            int mes2;
-            scanf("%d", &mes2);
+            scanf("%d", &mes);
             printf("Inserta un numero de dia de mes\n> ");
-            int dia_mes;
             scanf("%d", &dia_mes);
             int numero_dia = 0;
-            for(int i = 0; i < mes2; i++){
-                numero_dia += dias_meses2[i];
+            for(int i = 0; i < mes; i++){
+                numero_dia += dias_meses[i];
             }
-            printf("\nEl dia %d del mes %s es el dia %d",  dia_mes, meses2[mes2 - 1], numero_dia - (dias_meses2[mes2 - 1] - dia_mes));
+            printf("\nEl dia %d del mes %s es el dia %d",  dia_mes, meses[mes - 1], numero_dia - (dias_meses[mes - 1] - dia_mes));
             break;
         case 5:
             printf("\nInserta un numero de mes\n> ");
-            int dias_meses3[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-            char *meses3[12] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-            int mes3;
-            scanf("%d", &mes3);
+            scanf("%d", &mes);
             printf("Inserta un numero de dia de mes\n> ");
-            int dia_mes2;
-            scanf("%d", &dia_mes2);  
+            scanf("%d", &dia_mes);  
             int fin = 0;
-            for(int i = mes3; i < 12; i++){
-                fin += dias_meses3[i];
+            for(int i = mes; i < 12; i++){
+                fin += dias_meses[i];
             }       
-            printf("\nEl dia %d del mes %s es cuando hay %d dias restantes",  dia_mes2, meses3[mes3 - 1], fin + (dias_meses3[mes3 - 1]) - dia_mes2);   
+            printf("\nEl dia %d del mes %s es cuando hay %d dias restantes",  dia_mes, meses[mes - 1], fin + (dias_meses[mes - 1]) - dia_mes);   
             break;
         case 6:
             printf("\nInserta 10 numeros\n");
-            float numeros3[10];
-            llenar_matriz_simple(10, numeros3);
+            llenar_matriz_simple(10, numeros);
             printf("\nOrden original:\n");
-            imprimir_matriz_simple(10, numeros3);
+            imprimir_matriz_simple(10, numeros);
             printf("\nOrden invertido:\n");
-            orden_inverso(10, numeros3);
+            orden_inverso(10, numeros);
             break;
         case 7:
             printf("\nIngresa 10 numeros\n");
-            float numeros4[10];
             promedio = 0;
-            llenar_matriz_simple(10, numeros4);
+            llenar_matriz_simple(10, numeros);
             for(int i = 0; i < 10; i++){
-                promedio += numeros4[i];
+                promedio += numeros[i];
             }
             printf("\nLa media es %.2f", promedio/10);
-            printf("\n[ ");
+            printf("\nLos valores por encima de la media son: [ ");
             for(int i = 0; i < 10; i++){
-                if(numeros4[i] > promedio/10){
-                    printf("%.2f ", numeros4[i]);
+                if(numeros[i] > promedio/10){
+                    printf("%.0f ", numeros[i]);
                 }
             }
             printf("]");
@@ -135,39 +130,35 @@ int main(int argc, char *argv[]){
         case 8:
             printf("\nIngresa 10 numeros\n");
             float mayor;
-            llenar_matriz_simple(10, numeros4);
+            llenar_matriz_simple(10, numeros);
             for(int i = 0; i < 10; i++){
-                promedio += numeros4[i];
-                mayor = numeros4[i];
+                promedio += numeros[i];
+                mayor = numeros[i];
             } 
             printf("\n[ ");
             for(int i = 0; i < 10; i++){
-                if(numeros4[i] > mayor){
-                    mayor = numeros4[i];
+                if(numeros[i] > mayor){
+                    mayor = numeros[i];
                 }
-                printf("%.2f ", numeros4[i]);
+                printf("%.0f ", numeros[i]);
             }
             printf("]\n");
-            printf("El mayor es %.2f", mayor);
+            printf("El mayor es %.0f", mayor);
             break;
         case 9:
             printf("\nCalculemos la diferencia de dos vectores\n");
-            int vectorA[2];
-            int vectorB[2];
             int D[2];
             printf("Inserta las coordenadas del primer vector: ");
-            scanf("%d %d", &vectorA[0], &vectorA[1]);
+            scanf("%d %d", &vectorX[0], &vectorX[1]);
             printf("Inserta las coordenadas del segundo vector: ");
-            scanf("%d %d", &vectorB[0], &vectorB[1]);
-            D[0] = vectorA[0] - vectorB[0];
-            D[1] = vectorA[1] - vectorB[1];
-            printf("A = (%d, %d)\nB = (%d, %d)\n", vectorA[0], vectorA[1], vectorB[0], vectorB[1]);
+            scanf("%d %d", &vectorY[0], &vectorY[1]);
+            D[0] = vectorX[0] - vectorY[0];
+            D[1] = vectorX[1] - vectorY[1];
+            printf("A = (%d, %d)\nB = (%d, %d)\n", vectorX[0], vectorX[1], vectorY[0], vectorY[1]);
             printf("La diferencia es: D = (%d, %d)", D[0], D[1]);
             break;
         case 10:
             printf("\nCalculemos el producto escalar de dos vectores\n");
-            int vectorX[3];
-            int vectorY[3];
             int product_esc;
             printf("Inserta las coordenas del vector X: ");
             scanf("%d %d %d", &vectorX[0], &vectorX[1], &vectorX[2]);
@@ -179,30 +170,28 @@ int main(int argc, char *argv[]){
             break;
         case 11:
             printf("\nCalculemos el producto vectorial de dos vectores\n");
-            int vectorM[3];
-            int vectorN[3];
             int product_vec[3];
             printf("Inserta las coordenas del vector M: ");
-            scanf("%d %d %d", &vectorM[0], &vectorM[1], &vectorM[2]);
+            scanf("%d %d %d", &vectorX[0], &vectorX[1], &vectorX[2]);
             printf("Inserta las coordenas del vector N: ");
-            scanf("%d %d %d", &vectorN[0], &vectorN[1], &vectorN[2]);
-            product_vec[0] = vectorM[1]*vectorN[2] - vectorM[2]*vectorN[1];
-            product_vec[1] = vectorM[2]*vectorN[0] - vectorM[0]*vectorN[2];
-            product_vec[2] = vectorM[0]*vectorN[1] - vectorM[1]*vectorN[0];
-            printf("X = (%d, %d, %d)\nY = (%d, %d, %d)\n", vectorM[0], vectorM[1], vectorM[2], vectorN[0], vectorN[1], vectorN[2]);
+            scanf("%d %d %d", &vectorY[0], &vectorY[1], &vectorY[2]);
+            product_vec[0] = vectorX[1]*vectorY[2] - vectorX[2]*vectorY[1];
+            product_vec[1] = vectorX[2]*vectorY[0] - vectorX[0]*vectorY[2];
+            product_vec[2] = vectorX[0]*vectorY[1] - vectorX[1]*vectorY[0];
+            printf("X = (%d, %d, %d)\nY = (%d, %d, %d)\n", vectorX[0], vectorX[1], vectorX[2], vectorY[0], vectorY[1], vectorY[2]);
             printf("El producto vectorial es: (%d, %d, %d)", product_vec[0], product_vec[1], product_vec[2]);
             break;
         case 12:
             printf("\nVerifiquemos si dos vectores son linealmente dependientes\n");
-            int vectorV[2];
-            int vectorW[2];
+            int vectorM[2];
+            int vectorN[2];
             int dependientes;
             printf("Inserta las coordenadas del vector V: ");
-            scanf("%d %d", &vectorV[0], &vectorV[1]);
+            scanf("%d %d", &vectorM[0], &vectorM[1]);
             printf("Inserta las coordenadas del vector W: ");
-            scanf("%d %d", &vectorW[0], &vectorW[1]);
-            dependientes = vectorV[0]*vectorW[1] - vectorV[1]*vectorW[0];
-            printf("V = (%d, %d)\nW = (%d, %d)\n", vectorV[0], vectorV[1], vectorW[0], vectorW[1]);
+            scanf("%d %d", &vectorN[0], &vectorN[1]);
+            dependientes = vectorM[0]*vectorN[1] - vectorM[1]*vectorN[0];
+            printf("V = (%d, %d)\nW = (%d, %d)\n", vectorM[0], vectorM[1], vectorN[0], vectorN[1]);
             if(dependientes == 0){
                 printf("Los vectores son linealmente dependientes");
             }
@@ -220,14 +209,13 @@ int main(int argc, char *argv[]){
                     traspuesta[j][i] = matriz[i][j];
                 }
             }    
-            printf("\n\nMatriz normal:\n");
+            printf("\nMatriz normal:\n");
             imprimir_matriz(2, 2, matriz);
-            printf("\n\nMatriz traspuesta:\n");
+            printf("\nMatriz traspuesta:\n");
             imprimir_matriz(2, 2, traspuesta);
             break;
         case 14:
             printf("\nEl determinante de una matriz 3x3\n");
-            float matriz3x3[3][3];
             llenar_matriz(3, 3, matriz3x3);
             printf("\n");
             imprimir_matriz(3, 3, matriz3x3);
@@ -265,24 +253,10 @@ int main(int argc, char *argv[]){
                     if((i+j+2) % 2 != 0){
                         matriz_adjunta[i][j] *= -1;
                     }
-                    for(int m = 0; m < 2; m++){
-                        printf("[ ");
-                        for(int n = 0; n < 2; n++){
-                            printf("%.2f ", submatriz[m][n]);
-                        }
-                        printf("]\n");
-                    }
-                    printf("\n");
                 }
             }
-            printf("\nLa matriz adjunta es:\n");
-            for(int x = 0; x < 3; x++){
-                printf("[ ");
-                for(int y = 0; y < 3; y++){
-                    printf("%.2f ", matriz_adjunta[x][y]);
-                }
-                printf("]\n");
-            }
+            printf("La matriz adjunta es:\n");
+            imprimir_matriz(3, 3, matriz_adjunta);
 
     }
 }
