@@ -329,7 +329,7 @@ int main(int argc, char *argv[]){
             multiplicar_matrices(2, matriz2x2_A, matriz2x2_B, producto);
             imprimir_matriz(2, 2, producto);
         case 18:
-            printf("\nAun trabajando");
+            printf("\nIncomprensible");
         case 19:
             printf("\n");
             for(int i = 0; i < 12; i++){
