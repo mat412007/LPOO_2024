@@ -103,6 +103,17 @@ void inversa(float matriz_adjunta[3][3], float determinante, float matriz_invers
     }
 }
 
+void multiplicar_matrices(int size, float matrizA[size][size], float matrizB[size][size], float producto[size][size]){
+    for (int x = 0; x < size; x++) {
+        for (int y = 0; y < size; y++) {
+            for (int z = 0; z < size; z++) {
+                producto[x][y] += matrizA[x][z] * matrizB[z][y];
+            }
+        }
+    }
+        
+}
+
 int main(int argc, char *argv[]){
     int ejercicio;
     int dias_meses[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -301,5 +312,34 @@ int main(int argc, char *argv[]){
             inversa(matriz_adjunta, determinante3x3, matriz_inversa);
             printf("\nLa matriz inversa es:\n");
             imprimir_matriz(3, 3, matriz_inversa);
+        case 17:
+            printf("\nEl producto de dos matrices:\n");
+            float matriz2x2_A[2][2];
+            float matriz2x2_B[2][2];
+            float producto[2][2];
+            printf("\nInserta los valores de la primera matriz:\n");
+            llenar_matriz(2, 2, matriz2x2_A);
+            printf("\nInserta los valores de la segunda matriz:\n");
+            llenar_matriz(2, 2, matriz2x2_B);
+            printf("\nMatriz A:\n");
+            imprimir_matriz(2, 2, matriz2x2_A);
+            printf("\nMatriz B:\n");
+            imprimir_matriz(2, 2, matriz2x2_B);
+            printf("\nEl producto de A y B es:\n");
+            multiplicar_matrices(2, matriz2x2_A, matriz2x2_B, producto);
+            imprimir_matriz(2, 2, producto);
+        case 18:
+            printf("\nAun trabajando");
+        case 19:
+            printf("\n");
+            for(int i = 0; i < 12; i++){
+                printf("Numero: %d\tMes: %s\n", i+1, meses[i]);
+            }
+            printf("\nQue meses tienen 30 dias\n");
+            for(int i = 0; i < 12; i++){
+                if(dias_meses[i] == 30){
+                    printf("Numero: %d\tMes: %s\n", i+1, meses[i]);
+                }
+            }
     }
 }
