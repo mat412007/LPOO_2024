@@ -40,7 +40,7 @@ void poner_pozos(int pozos[10][10]){
 void juego(int tablero[10][10], int pozos[10][10], int jugador_i, int jugador_j){
     int movimiento;
     while(1){
-        printf("Hacia donde te deseas mover(inserta el numero):\n1- Arriba\n2- Abajo\n3- Izquierda\n4- Derecha\n> ");
+        printf("\nHacia donde te deseas mover(inserta el numero):\n1- Arriba\n2- Abajo\n3- Izquierda\n4- Derecha\n> ");
         scanf("%d", &movimiento);
         if(movimiento == 1){
             jugador_i--;
