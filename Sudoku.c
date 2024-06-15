@@ -44,8 +44,7 @@ bool valido(int tablero[9][9], int fila, int columna, int numero) {
     int inicioFila = fila - fila % 3;
     int inicioColumna = columna - columna % 3;
     for(int i = 0; i < 9; i++) {
-        if(tablero[fila][i] == numero || tablero[i][columna] == numero || 
-            tablero[inicioFila + i / 3][inicioColumna + i % 3] == numero) {
+        if(tablero[fila][i] == numero || tablero[i][columna] == numero || tablero[inicioFila + i / 3][inicioColumna + i % 3] == numero) {
             return false;
         }
     }
