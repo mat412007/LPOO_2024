@@ -139,6 +139,7 @@ int main(int argc, char *argv[]){
     int fila, columna, numero;
 
     while(tablero_completado(tablero) == 0 && intentos > 0) {
+        // Ingresas las coordenadas y el valor para insertar en ellas
         printf("Ingrese fila: ");
         scanf("%d", &fila);
         printf("Ingrese columna: ");
@@ -149,23 +150,23 @@ int main(int argc, char *argv[]){
         fila--; 
         columna--;
 
-        if((fila+1) < 1 || (fila+1) > 9 || (columna+1) < 1 || (columna+1) > 9 || numero < 1 || numero > 9){
+        if((fila+1) < 1 || (fila+1) > 9 || (columna+1) < 1 || (columna+1) > 9 || numero < 1 || numero > 9){ // Si los vvalores estan fuera de rango
             printf("Ingrese numeros válidos(1 al 9)\n");
             continue;
         }
-        else if(tablero[fila][columna] == 0 && valido(tablero, fila, columna, numero)){
+        else if(tablero[fila][columna] == 0 && valido(tablero, fila, columna, numero)){ // Si el espacio esta vacio y el numero no es repetido
             tablero[fila][columna] = numero;
             printf("\nMovimiento valido. \n");
         } 
-        else if(tablero[fila][columna] != 0){
+        else if(tablero[fila][columna] != 0){ // Si el espacio ya esta completado
             printf("\nEse espacio ya ha sido completado.\nIntentalo de nuevo\n");
         }
-        else{
+        else{ // Si el numero esta repetido
             printf("\nMovimiento invalido. \nIntente de nuevo.\n");
             intentos--;
         }
 
-        if(intentos == 0){
+        if(intentos == 0){ // Si te quedaste sin intentos
             printf("Perdiste. \nSe acabaron los intentos.\n");
         }
 
@@ -174,6 +175,7 @@ int main(int argc, char *argv[]){
         imprimir_tablero(tablero);
     }
 
+    // Si ganaste el juego
     if(tablero_completado(tablero)){
         printf("\n¡Felicidades, completaste el Sudoku!\n");
     }
