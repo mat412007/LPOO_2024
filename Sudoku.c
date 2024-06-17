@@ -57,7 +57,7 @@ bool resolver(int tablero[9][9]) {
         for(int columna = 0; columna < 9; columna++) {
             if(tablero[fila][columna] == 0) {
                 for(int numero = 1; numero <= 9; numero++) {
-                    if (valido(tablero, fila, columna, numero)) {
+                    if(valido(tablero, fila, columna, numero)) {
                         tablero[fila][columna] = numero;
                         if(resolver(tablero)) {
                             return true;
@@ -123,17 +123,6 @@ bool tablero_completado(int tablero[9][9]) {
     return true;
 }
 
-// Verifica si el espacio para completar ya ha sido completado
-bool lleno(int tablero[9][9], int fila, int columna){
-    for(int i = 0; i < 9; i++){
-        for(int j = 0; j < 9; j++){
-            if(tablero[i][j] == tablero[fila][columna]){
-                return true;
-            }
-        }
-    }
-    return false;
-}
 
 int main(int argc, char *argv[]){
     srand(time(NULL));
@@ -141,6 +130,7 @@ int main(int argc, char *argv[]){
     printf("Seleccione la dificultad:\n1. Facil\n2. Normal\n3. Dificil\n> ");
     int dificultad;
     scanf("%d", &dificultad);
+    printf("\n");
     crear_tablero(tablero, dificultad);
     printf("Tablero inicial:\n");
     imprimir_tablero(tablero);
@@ -156,38 +146,38 @@ int main(int argc, char *argv[]){
         printf("Ingrese el numero: ");
         scanf("%d", &numero);
 
-
-        if(fila < 1 || fila > 9 || columna < 1 || columna > 9 || numero < 1 || numero > 9) {
-            printf("Ingrese numeros válidos\n");
-            continue;
-        }
-
         fila--; 
         columna--;
 
-        if(tablero[fila][columna] == 0 && valido(tablero, fila, columna, numero)) {
+        if((fila+1) < 1 || (fila+1) > 9 || (columna+1) < 1 || (columna+1) > 9 || numero < 1 || numero > 9){
+            printf("Ingrese numeros válidos(1 al 9)\n");
+            continue;
+        }
+        else if(tablero[fila][columna] == 0 && valido(tablero, fila, columna, numero)){
             tablero[fila][columna] = numero;
-            printf("\nMovimiento valido. \nTablero actual:\n");
-            imprimir_tablero(tablero);
+            printf("\nMovimiento valido. \n");
         } 
-        else if(lleno(tablero, fila, columna)){
+        else if(tablero[fila][columna] != 0){
             printf("\nEse espacio ya ha sido completado.\nIntentalo de nuevo\n");
-            intentos--;
         }
         else{
             printf("\nMovimiento invalido. \nIntente de nuevo.\n");
             intentos--;
         }
 
-        if(intentos == 0) {
+        if(intentos == 0){
             printf("Perdiste. \nSe acabaron los intentos.\n");
-            return 0;
         }
+
+        printf("Tienes %d intentos restantes\n", intentos);
+        printf("Tablero actual:\n");
+        imprimir_tablero(tablero);
     }
 
-    if(tablero_completado(tablero)) {
+    if(tablero_completado(tablero)){
         printf("\n¡Felicidades, completaste el Sudoku!\n");
     }
+
 }
 
 
