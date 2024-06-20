@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 struct persona{
     char nombre[20];
@@ -83,7 +84,7 @@ int main(){
             while ((getchar()) != '\n'); // Limpiar el buffer de entrada
             inicial = getchar(); // Leer el carácter de inicial
             for(int i = 0; i < cantidad; i++){
-                if(personas[i].nombre[0] == inicial){
+                if(personas[i].nombre[0] == toupper(inicial) || personas[i].nombre[0] == inicial){ // toupper y tolower convierten de mayuscula a minuscula y viceversa
                     printf("-------------------------\n");
                     printf("Nombre: %s\n", personas[i].nombre);
                     printf("Direccion: %s\n", personas[i].direccion);

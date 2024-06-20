@@ -67,7 +67,7 @@ int main(int argc, char *argv[]){
             scanf("%s", &artista_titulo);
             printf("Canciones encontradas: \n");
             for(int i = 0; i < numero_cancion; i++){
-                if(strcmp(canciones[i].artista, artista_titulo) == 0 || strcmp(canciones[i].titulo, artista_titulo) == 0){
+                if(strstr(canciones[i].artista, artista_titulo) != NULL || strstr(canciones[i].titulo, artista_titulo) != NULL){
                     imprimir_cancion(canciones, i);
                 }
             }
