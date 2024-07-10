@@ -59,6 +59,14 @@ void multiplicar_matrices(int filas, int columnas, int recorrer,int matriz_A[fil
     }
 }
 
+void matriz_traspuesta(int filas, int columnas, int matriz[filas][columnas], int traspuesta[columnas][filas]){
+    for(int i = 0; i < filas; i++){
+        for(int j = 0; j < columnas; j++){
+            traspuesta[j][i] = matriz[i][j];
+        }
+    }
+}
+
 int main(int argc, char *argv[]) {
     int ejercicio;
     printf("Que ejercicio deseas corregir?\n> ");
@@ -89,8 +97,8 @@ int main(int argc, char *argv[]) {
             int matriz_A[20][20];
             int matriz_B[20][20];
             bool dos_matrices = false;
+            bool salida = false;
             while(1){ 
-                // int transpuesta[filas][columnas];
                 int determinante;
                 printf("\nMenu: \n");
                 printf("1- Cargar matriz\n");
@@ -98,7 +106,7 @@ int main(int argc, char *argv[]) {
                 printf("3- Sumar matrices\n");
                 printf("4- Multiplicar matrices\n");
                 printf("5- Calcular determinante\n");
-                printf("6- Matriz transpuesta\n");
+                printf("6- Matriz traspuesta\n");
                 printf("7- Salir\n");
                 int menu;
                 printf("> ");
@@ -175,11 +183,40 @@ int main(int argc, char *argv[]) {
                         escribir_matriz(filas_A, columnas_B, multiplicacion);
                         break;
                     } 
+                    case 5: {
+                        if(dos_matrices){
+                            printf("Error. Solo se puede calcular el determinante de una matriz a la vez.\n");
+                            continue;
+                        }
+                        if(filas_A != columnas_A){
+                            printf("Error. Hace falta que el numero de filas sea igual al de columnas\n");
+                            continue;
+                        }
+
+                    }
+                    case 6: {
+                        if(dos_matrices){
+                            printf("Error. Solo se puede calcular una matriz traspuesta a la vez.\n");
+                            continue;
+                        }
+                        int traspuesta[columnas_A][filas_A];
+
+                        matriz_traspuesta(filas_A, columnas_A, matriz_A, traspuesta);
+
+                        escribir_matriz(columnas_A, filas_A, traspuesta);
+                        break;
+                    }
+                    case 7: {
+                        printf("Has salido del programa\n");
+                        salida = true;
+                        break;
+                    }
                     default: {
                         printf("Opcion invalida\nIntentalo de nuevo\n");
                         continue;
                     } 
                 }
+                if(salida) break;
             }
         }
     }
