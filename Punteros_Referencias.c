@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 void ingresar_numeros(int *numeros) {
     for(int i = 0; i < 5; i++) {
@@ -19,6 +20,42 @@ void ordenar_numeros(int *numeros){
         }
         numeros[indice] = numeros[i];
         numeros[i] = menor;
+    }
+}
+
+void cargar_matriz(int filas, int columnas, int matriz[filas][columnas]){
+    for(int i = 0; i < filas; i++){
+        for(int j = 0; j < columnas; j++){
+            printf("El valor de la posicion %d %d es: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+}
+
+void escribir_matriz(int filas, int columnas, int matriz[filas][columnas]){
+    for(int i = 0; i < filas; i++){
+        for(int j = 0; j < columnas; j++){
+            printf("| %3d\t", matriz[i][j]);
+        }
+        printf("|\n");
+    }
+}
+
+void sumar_matrices(int filas, int columnas, int matriz_A[filas][columnas], int matriz_B[filas][columnas], int suma[filas][columnas]){
+    for(int i = 0; i < filas; i++){
+        for(int j = 0; j < columnas; j++){
+            suma[i][j] = matriz_A[i][j] + matriz_B[i][j];
+        }
+    }
+}
+
+void multiplicar_matrices(int filas, int columnas, int recorrer,int matriz_A[filas][recorrer], int matriz_B[recorrer][columnas], int multiplicacion[filas][columnas]){
+    for(int i = 0; i < filas; i++) {
+        for(int j = 0; j < columnas; j++) {
+            for(int x = 0; x < recorrer; x++) {
+                multiplicacion[i][j] += matriz_A[i][x] * matriz_B[x][j];
+            }
+        }
     }
 }
 
@@ -43,6 +80,107 @@ int main(int argc, char *argv[]) {
             printf("\nd = %d", d);
             printf("\ne = %d", e);
             break;
+        }
+        case 6: {
+            int filas_A = 0;
+            int columnas_A = 0;
+            int filas_B = 0;
+            int columnas_B = 0;
+            int matriz_A[20][20];
+            int matriz_B[20][20];
+            bool dos_matrices = false;
+            while(1){ 
+                // int transpuesta[filas][columnas];
+                int determinante;
+                printf("\nMenu: \n");
+                printf("1- Cargar matriz\n");
+                printf("2- Escribir matriz\n");
+                printf("3- Sumar matrices\n");
+                printf("4- Multiplicar matrices\n");
+                printf("5- Calcular determinante\n");
+                printf("6- Matriz transpuesta\n");
+                printf("7- Salir\n");
+                int menu;
+                printf("> ");
+                scanf("%d", &menu);
+                switch(menu){
+                    case 1: {
+                        printf("Deseas cargar una matriz o dos?\n> ");
+                        int cantidad_matrices;
+                        scanf("%d", &cantidad_matrices);
+                        if(cantidad_matrices == 1 || cantidad_matrices == 2){
+                            dos_matrices = false;
+                            printf("Matriz A:\n");
+                            printf("Filas: ");
+                            scanf("%d", &filas_A);
+                            printf("Columnas: ");
+                            scanf("%d", &columnas_A);
+                            printf("Matriz A:\n");
+                            cargar_matriz(filas_A, columnas_A, matriz_A);
+                        }
+                        if(cantidad_matrices == 2){
+                            dos_matrices = true;
+                            printf("\nMatriz B:\n");
+                            printf("Filas: ");
+                            scanf("%d", &filas_B);
+                            printf("Columnas: ");
+                            scanf("%d", &columnas_B);
+                            printf("Matriz B:\n");
+                            cargar_matriz(filas_B, columnas_B, matriz_B);
+                        }
+                        if(cantidad_matrices != 1 && cantidad_matrices != 2){
+                            printf("Error. Solo puede haber una o dos matrices\n");
+                            continue;
+                        }
+                        break;
+                    }
+                    case 2: {
+                        printf("Matriz A:\n");
+                        escribir_matriz(filas_A, columnas_A, matriz_A);
+                        if(dos_matrices){
+                            printf("\nMatriz B:\n");
+                            escribir_matriz(filas_B, columnas_B, matriz_B);
+                        }
+                        break;
+                    }
+                    case 3: {
+                        if(dos_matrices == false){
+                            printf("Error. Se necesitan dos matrices para una suma\n");
+                            continue;
+                        }
+                        if(filas_A != filas_B || columnas_A != columnas_B){
+                            printf("Error. Solo se pueden sumar matrices que sean del mismo tamaño\n");
+                            continue;
+                        }
+                        int suma[filas_A][columnas_A];
+
+                        sumar_matrices(filas_A, columnas_A, matriz_A, matriz_B, suma);
+
+                        escribir_matriz(filas_A, columnas_A, suma);
+                        break;
+                    }
+                    case 4: {
+                        if(dos_matrices == false){
+                            printf("Error. Se necesitan dos matrices para una multiplicacion\n");
+                            continue;
+                        }
+                        if(columnas_A != filas_B){
+                            printf("Error. El numero de columnas de la primera debe ser igual al de filas de la segunda\n");
+                            continue;
+                        }
+                        int multiplicacion[20][20];
+                        
+                        multiplicar_matrices(filas_A, columnas_B, columnas_A, matriz_A, matriz_B, multiplicacion);
+
+                        escribir_matriz(filas_A, columnas_B, multiplicacion);
+                        break;
+                    } 
+                    default: {
+                        printf("Opcion invalida\nIntentalo de nuevo\n");
+                        continue;
+                    } 
+                }
+            }
         }
     }
 }
