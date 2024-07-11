@@ -83,10 +83,9 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
     return determinante;     
 }
 
-/* void determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
-    float determinante;
+/* float cofactor(int filas, int columnas, int columna, int matriz[filas][columnas]){
+    float cofactor;
     int menor[filas-1][columnas-1];
-    int columna = 1;
     for (int i = 0; i < 3; i++) {
         int m = 0; 
         for (int row = 1; row < 3; row++) {
@@ -108,34 +107,19 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
         printf("\n");
     }
 
-} */
-
-
-/* float diagonal(int fila, int columna, int size, int matriz[size][size]){
-    float diagonal = 1.0;
-    int i = fila+1;
-    int j = columna+1;
-    for(int x = 0; x < size-1; x++){
-        diagonal *= matriz[i][j];
-        i++;
-        j++;
-        if(i == size){ i = 0; }
-        if(j == size){ j = 0; }
-    }
-    return diagonal;
+    cofactor = (menor[0][0] * menor[1][1]) - (menor[0][1] * menor[1][0]);
+    printf("\nConfactor es igual a: %.0f\n", cofactor);
 }
 
 float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
     float determinante;
     for(int i = 0; i < 1; i++){
         for(int j = 0; j < columnas; j++){
-            if(j % 2 == 0){
-                determinante += matriz[i][j] * pow(-1, i+1+j+1) * diagonal(i, j, columnas, matriz);
-            }
+            determinante += matriz[i][j] * pow(-1, i+1+j+1) * cofactor(filas, columnas, j, matriz);
         }
     }
     return determinante;     
-}  */
+} */
 
 int main(int argc, char *argv[]) {
     int ejercicio;
