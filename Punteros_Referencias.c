@@ -109,6 +109,7 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
 
     cofactor = (menor[0][0] * menor[1][1]) - (menor[0][1] * menor[1][0]);
     printf("\nConfactor es igual a: %.0f\n", cofactor);
+    return cofactor;
 }
 
 float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
