@@ -69,16 +69,27 @@ void matriz_traspuesta(int filas, int columnas, int matriz[filas][columnas], int
 }
 
 float determinante_2x2(int filas, int columnas, int matriz[filas][columnas]){
-    int determinante = (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]);
+    float determinante = (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]);
     return determinante;
 }
 
-float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
-    int determinante = matriz[0][0]*((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1])) 
-                    - matriz[0][1]*((matriz[1][0]*matriz[2][2]) - (matriz[1][2]*matriz[2][0])) 
-                    + matriz[0][2]*((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
+/* float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
+    float determinante = matriz[0][0]*((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1])) 
+                       - matriz[0][1]*((matriz[1][0]*matriz[2][2]) - (matriz[1][2]*matriz[2][0])) 
+                       + matriz[0][2]*((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
     return determinante;     
-} 
+} */
+
+float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
+    float determinante = (matriz[0][0]*matriz[1][1]*matriz[2][2]) 
+                       + (matriz[0][1]*matriz[1][2]*matriz[2][0])
+                       + (matriz[0][2]*matriz[1][0]*matriz[2][1])
+                       - (matriz[0][2]*matriz[1][1]*matriz[2][0])
+                       - (matriz[0][1]*matriz[1][0]*matriz[2][2])
+                       - (matriz[0][0]*matriz[1][2]*matriz[2][1]);
+    return determinante;     
+}
+
 
 /* float diagonal(int fila, int columna, int size, int matriz[size][size]){
     float diagonal = 1.0;
@@ -100,9 +111,6 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
         for(int j = 0; j < columnas; j++){
             if(j % 2 == 0){
                 determinante += matriz[i][j] * pow(-1, i+1+j+1) * diagonal(i, j, columnas, matriz);
-            }
-            else{
-                determinante -= matriz[i][j] * pow(-1, i+1+j+1) * diagonal(i, j, columnas, matriz);
             }
         }
     }
