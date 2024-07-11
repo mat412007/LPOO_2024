@@ -73,13 +73,6 @@ float determinante_2x2(int filas, int columnas, int matriz[filas][columnas]){
     return determinante;
 }
 
-/* float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
-    float determinante = matriz[0][0]*((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1])) 
-                       - matriz[0][1]*((matriz[1][0]*matriz[2][2]) - (matriz[1][2]*matriz[2][0])) 
-                       + matriz[0][2]*((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
-    return determinante;     
-} */
-
 float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
     float determinante = (matriz[0][0]*matriz[1][1]*matriz[2][2]) 
                        + (matriz[0][1]*matriz[1][2]*matriz[2][0])
@@ -89,6 +82,33 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
                        - (matriz[0][0]*matriz[1][2]*matriz[2][1]);
     return determinante;     
 }
+
+/* void determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
+    float determinante;
+    int menor[filas-1][columnas-1];
+    int columna = 1;
+    for (int i = 0; i < 3; i++) {
+        int m = 0; 
+        for (int row = 1; row < 3; row++) {
+            int n = 0; 
+            for (int col = 0; col < 3; col++) {
+                if (col != columna) {
+                    menor[m][n] = matriz[row][col];
+                    n++;
+                }
+            }
+            m++;
+        }
+    }
+
+    for(int i = 0; i < filas-1; i++){
+        for(int j = 0; j < columnas-1; j++){
+            printf("%d ", menor[i][j]);
+        }
+        printf("\n");
+    }
+
+} */
 
 
 /* float diagonal(int fila, int columna, int size, int matriz[size][size]){
