@@ -120,12 +120,14 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
     else if(filas == 2 && columnas == 2){
         return (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]);
     }
-    for(int i = 0; i < 1; i++){
-        for(int j = 0; j < columnas; j++){
-            determinante += matriz[i][j] * pow(-1, i+1+j+1) * cofactor(filas, columnas, j, matriz);
+    else if(filas == 3 && columnas == 3){
+        for(int i = 0; i < 1; i++){
+            for(int j = 0; j < columnas; j++){
+                determinante += matriz[i][j] * pow(-1, i+1+j+1) * cofactor(filas, columnas, j, matriz);
+            }
         }
+        return determinante;   
     }
-    return determinante;     
 } */
 
 int main(int argc, char *argv[]) {
