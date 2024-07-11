@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 void ingresar_numeros(int *numeros) {
     for(int i = 0; i < 5; i++) {
@@ -67,6 +68,47 @@ void matriz_traspuesta(int filas, int columnas, int matriz[filas][columnas], int
     }
 }
 
+float determinante_2x2(int filas, int columnas, int matriz[filas][columnas]){
+    int determinante = (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]);
+    return determinante;
+}
+
+float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
+    int determinante = matriz[0][0]*((matriz[1][1]*matriz[2][2]) - (matriz[1][2]*matriz[2][1])) 
+                    - matriz[0][1]*((matriz[1][0]*matriz[2][2]) - (matriz[1][2]*matriz[2][0])) 
+                    + matriz[0][2]*((matriz[1][0]*matriz[2][1]) - (matriz[1][1]*matriz[2][0]));
+    return determinante;     
+} 
+
+/* float diagonal(int fila, int columna, int size, int matriz[size][size]){
+    float diagonal = 1.0;
+    int i = fila+1;
+    int j = columna+1;
+    for(int x = 0; x < size-1; x++){
+        diagonal *= matriz[i][j];
+        i++;
+        j++;
+        if(i == size){ i = 0; }
+        if(j == size){ j = 0; }
+    }
+    return diagonal;
+}
+
+float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
+    float determinante;
+    for(int i = 0; i < 1; i++){
+        for(int j = 0; j < columnas; j++){
+            if(j % 2 == 0){
+                determinante += matriz[i][j] * pow(-1, i+1+j+1) * diagonal(i, j, columnas, matriz);
+            }
+            else{
+                determinante -= matriz[i][j] * pow(-1, i+1+j+1) * diagonal(i, j, columnas, matriz);
+            }
+        }
+    }
+    return determinante;     
+}  */
+
 int main(int argc, char *argv[]) {
     int ejercicio;
     printf("Que ejercicio deseas corregir?\n> ");
@@ -99,7 +141,6 @@ int main(int argc, char *argv[]) {
             bool dos_matrices = false;
             bool salida = false;
             while(1){ 
-                int determinante;
                 printf("\nMenu: \n");
                 printf("1- Cargar matriz\n");
                 printf("2- Escribir matriz\n");
@@ -113,7 +154,7 @@ int main(int argc, char *argv[]) {
                 scanf("%d", &menu);
                 switch(menu){
                     case 1: {
-                        printf("Deseas cargar una matriz o dos?\n> ");
+                        printf("\nDeseas cargar una matriz o dos?\n> ");
                         int cantidad_matrices;
                         scanf("%d", &cantidad_matrices);
                         if(cantidad_matrices == 1 || cantidad_matrices == 2){
@@ -143,7 +184,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     case 2: {
-                        printf("Matriz A:\n");
+                        printf("\nMatriz A:\n");
                         escribir_matriz(filas_A, columnas_A, matriz_A);
                         if(dos_matrices){
                             printf("\nMatriz B:\n");
@@ -160,6 +201,7 @@ int main(int argc, char *argv[]) {
                             printf("Error. Solo se pueden sumar matrices que sean del mismo tamaño\n");
                             continue;
                         }
+                        printf("\n");
                         int suma[filas_A][columnas_A];
 
                         sumar_matrices(filas_A, columnas_A, matriz_A, matriz_B, suma);
@@ -176,6 +218,7 @@ int main(int argc, char *argv[]) {
                             printf("Error. El numero de columnas de la primera debe ser igual al de filas de la segunda\n");
                             continue;
                         }
+                        printf("\n");
                         int multiplicacion[20][20];
                         
                         multiplicar_matrices(filas_A, columnas_B, columnas_A, matriz_A, matriz_B, multiplicacion);
@@ -193,12 +236,34 @@ int main(int argc, char *argv[]) {
                             continue;
                         }
 
+                        float determinante;
+                        if(filas_A == 1 && columnas_A == 1){
+                            determinante = matriz_A[0][0];
+                        }
+                        else if(filas_A == 2 && columnas_A == 2){
+                            determinante = determinante_2x2(filas_A, columnas_A, matriz_A);
+                        }
+                        else if(filas_A == 3 && columnas_A == 3){
+                            determinante = determinante_3x3(filas_A, columnas_A, matriz_A);
+                        }
+                        else if(filas_A > 3 && columnas_A > 3){
+                            
+                        }
+                        /*
+                        int determinante_XxX(filas_A, columnas_A, matriz_A[filas_A][columnas_A]){
+                            int determinante;
+                            
+                        }
+                        */
+                        printf("\nEl determinante es: %.0f\n", determinante);
+                        break;
                     }
                     case 6: {
                         if(dos_matrices){
                             printf("Error. Solo se puede calcular una matriz traspuesta a la vez.\n");
                             continue;
                         }
+                        printf("\n");
                         int traspuesta[columnas_A][filas_A];
 
                         matriz_traspuesta(filas_A, columnas_A, matriz_A, traspuesta);
