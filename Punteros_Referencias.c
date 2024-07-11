@@ -108,12 +108,18 @@ float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
     }
 
     cofactor = (menor[0][0] * menor[1][1]) - (menor[0][1] * menor[1][0]);
-    printf("\nConfactor es igual a: %.0f\n", cofactor);
+    printf("Confactor es igual a: %.0f\n\n", cofactor);
     return cofactor;
 }
 
 float determinante_3x3(int filas, int columnas, int matriz[filas][columnas]){
     float determinante;
+    if(filas == 1 && columnas == 1){
+        return matriz[0][0];
+    }
+    else if(filas == 2 && columnas == 2){
+        return (matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]);
+    }
     for(int i = 0; i < 1; i++){
         for(int j = 0; j < columnas; j++){
             determinante += matriz[i][j] * pow(-1, i+1+j+1) * cofactor(filas, columnas, j, matriz);
