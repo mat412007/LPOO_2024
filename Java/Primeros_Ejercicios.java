@@ -38,7 +38,28 @@ public class Primary_Class {
 			
 		        }
             case 3:
-                
+                while(true) {
+                    System.out.println("Ingresa un numero");
+                    int numero = sc.nextInt();
+                    if((primo(numero) == true) && numero > 100){
+                        System.out.println("Has ingresado un numero primo mayor a 100\nEs el fin");
+                        break;
+                    }
+                    System.out.println("");
+                }
+            case 4:
+                System.out.println("5 + 5 = " + (5+5));
+                System.out.println("10 - 2 = " + (10-2));
+                System.out.println("10 * 10 = " + (10*10));
+                System.out.println("25 / 5 = " + (25/5));
+            case 5:
+                String armas = {"Espada", "Escudo", "Lanza", "Arco", "Flecha", "Hacha"};
+                int num_arma = 1;
+                System.out.println("Cuales son armas de guerra antiguas?");
+                for(String a: armas){
+                    System.out.println(num_arma + "- " + a);
+                    num_arma++;
+                }
         }
 	}
 
