@@ -16,21 +16,60 @@ public class Primeros_Ejercicios {
     static boolean repeticion() {
         Scanner input = new Scanner(System.in);
         while(true){
-            System.out.println("\nDeseas corregir otro ejercicio? Y o N:");
+            System.out.print("\nDeseas corregir otro ejercicio? Y o N:");
             String answer = input.nextLine().trim(); // trim() elimina los espacios al comienzo y al finañ
             if(answer.equalsIgnoreCase("Y")){ // Compara con la letra en mayuscula y minuscula
                 return true;
             }
             else if(answer.equalsIgnoreCase("N")){
                 return false;
-            }                
+            }      
         }
+    }
+
+    static void calculadora() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Que deseas hacer:\n1- Suma\n2- Resta\n3- Multiplicacion\n4- Division\n> ");
+        int opcion = input.nextInt();
+        int numero_1;
+        int numero_2;
+        while(true){
+            switch(opcion){
+                case 1:
+                    System.out.print("Ingresa dos numeros para sumar: ");
+                    numero_1 = input.nextInt();
+                    numero_2 = input.nextInt();
+                    System.out.println("\n" + numero_1 + " + " + numero_2 + " = " + (numero_1 + numero_2));
+                    break;
+                case 2:
+                    System.out.print("Ingresa dos numeros para restar: ");
+                    numero_1 = input.nextInt();
+                    numero_2 = input.nextInt();
+                    System.out.println("\n" + numero_1 + " - " + numero_2 + " = " + (numero_1 - numero_2));
+                    break;
+                case 3:
+                    System.out.print("Ingresa dos numeros para multiplicar: ");
+                    numero_1 = input.nextInt();
+                    numero_2 = input.nextInt();
+                    System.out.println("\n" + numero_1 + " * " + numero_2 + " = " + (numero_1 * numero_2));
+                    break;
+                case 4:
+                    System.out.print("Ingresa dos numeros para dividir: ");
+                    numero_1 = input.nextInt();
+                    numero_2 = input.nextInt();
+                    System.out.println("\n" + numero_1 + " / " + numero_2 + " = " + (numero_1 / numero_2));
+                    break;
+                default:
+                    System.out.println("Opcion no permitida. Ingresa un numero del 1 al 4");
+            }
+        }
+        
     }
 
 	public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         while(true){
-            System.out.println("\nQue ejercicio deseas corregir?: ");
+            System.out.print("\nQue ejercicio deseas corregir?: ");
 		    int ejercicio = input.nextInt();
             System.out.println("");
             switch(ejercicio){
@@ -58,7 +97,7 @@ public class Primeros_Ejercicios {
                     break;
                 case 3:
                     while(true) {
-                        System.out.println("Ingresa un numero");
+                        System.out.print("Ingresa un numero: ");
                         int numero = input.nextInt();
                         if((primo(numero) == true) && numero > 100){
                             System.out.println("Has ingresado un numero primo mayor a 100\nEs el fin");
@@ -68,10 +107,7 @@ public class Primeros_Ejercicios {
                     }
                     break;
                 case 4:
-                    System.out.println("5 + 5 = " + (5+5));
-                    System.out.println("10 - 2 = " + (10-2));
-                    System.out.println("10 * 10 = " + (10*10));
-                    System.out.println("25 / 5 = " + (25/5));
+                    calculadora();
                     break;
                 case 5:
                     String[] armas = {"Espada", "Escudo", "Lanza", "Arco", "Flecha", "Hacha"}; // Declaracion de array con Strings
