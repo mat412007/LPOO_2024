@@ -16,7 +16,7 @@ public class Primeros_Ejercicios {
     static boolean repeticion() {
         Scanner input = new Scanner(System.in);
         while(true){
-            System.out.print("\nDeseas corregir otro ejercicio? Y o N:");
+            System.out.print("\nDeseas corregir otro ejercicio? Y o N: ");
             String answer = input.nextLine().trim(); // trim() elimina los espacios al comienzo y al finañ
             if(answer.equalsIgnoreCase("Y")){ // Compara con la letra en mayuscula y minuscula
                 return true;
@@ -110,12 +110,28 @@ public class Primeros_Ejercicios {
                     calculadora();
                     break;
                 case 5:
-                    String[] armas = {"Espada", "Escudo", "Lanza", "Arco", "Flecha", "Hacha"}; // Declaracion de array con Strings
-                    int num_arma = 1; // Numero de item en la lista(no es el indice)
-                    System.out.println("Armas de guerra antiguas:");
-                    for(String a: armas){ // Bucle for-each
-                        System.out.println(num_arma + "- " + a); // Imprime el numero de arma y su nombre
-                        num_arma++; // Se aumenta el numero al pasar a la siguiente arma
+                    String[] comida = {"Arroz", "Manzanas", "Papas", "Huevos", "Harina"};
+                    String[] muebles = {"Almohadas", "Sillas", "Silloncito", "Cuadro", "Mesa"};
+                    String[] ropa = {"Camperas", "Medias", "Zapatos", "Shorts", "Remeras"};
+                    System.out.println("Que lista de compras pendientes deseas ver?");
+                    System.out.print("1- Comida\n2- Muebles\n3- Ropa\n> ");
+                    String[] lista = new String[5];
+                    int num_lista = input.nextInt();
+                    System.out.println("");
+                    if(num_lista == 1){ 
+                        lista = comida; 
+                    }
+                    else if(num_lista == 2){ 
+                        lista = muebles; 
+                    }
+                    else if(num_lista == 3){ 
+                        lista = ropa; 
+                    }
+                    int num = 1;
+                    System.out.println("Lista seleccionada:");
+                    for(String a: lista){ // Bucle for-each
+                        System.out.println(num + "- " + a); // Imprime el numero de arma y su nombre
+                        num++; // Se aumenta el numero al pasar a la siguiente arma
                     }
                     break; // Salir del switch una vez terminado
                 default:
