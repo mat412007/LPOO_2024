@@ -153,7 +153,13 @@ public class Demo{
                 break;
               
             case 15:
-            	
+            	int numero;
+            	do {
+            		System.out.print("Ingresa un numero: ");
+                	numero = in.nextInt();
+            	} while(numero < 0);
+            	System.out.println("Has ingresado un numero valido, el " + numero);
+            	break;
 
         }
         
