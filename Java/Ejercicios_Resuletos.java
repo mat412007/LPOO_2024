@@ -160,6 +160,66 @@ public class Demo{
             	} while(numero < 0);
             	System.out.println("Has ingresado un numero valido, el " + numero);
             	break;
+            
+            case 16:
+            	boolean contraseña_correcta = false;
+            	String contraseña = "cataratasdaigual";
+            	String contraseña_input;
+            	int intentos = 3;
+            	do {
+            		System.out.print("Cual es la contraseña: ");
+            		contraseña_input = in.next();
+            		if(contraseña_input.equals(contraseña)) { // Comparacion de Strings en Java
+            			System.out.println("\nEnhorabuena");
+            			contraseña_correcta = true;
+            			break;
+            		}
+            		intentos--;
+            	} while(intentos != 0);
+            	if(!contraseña_correcta) {
+            		System.out.println("\nHas desperdiciado los 3 intentos");
+            	}
+            	break;
+            	
+            case 17:
+            	System.out.print("Introduce un dia de la semana: ");
+            	String dia_semana = in.next();
+            	dia_semana = dia_semana.substring(0,1).toUpperCase()  + dia_semana.substring(1);
+            	switch(dia_semana){
+            		case "Lunes":
+            		case "Martes":
+            		case "Miercoles":
+            		case "ueves":
+            		case "Viernes":
+            			System.out.println("Es un dia laboral");
+            			break;
+            		case "Sabado":
+            		case "Domingo":
+            			System.out.println("Es un dia festivo");
+            			break;
+            		default:
+            			System.out.println("No es un dia de la semana");
+            	}
+            	break;
+            	
+            case 18:
+            	System.out.print("Introduce un numero: ");
+            	numero_1 = in.nextInt();
+            	System.out.print("Introduce un numero: ");
+            	numero_2 = in.nextInt();
+            	if(numero_2 < numero_1) { // Aseguramos que el numero 1 siempre sea el menor
+            		int cambio = numero_1;
+            		numero_1 = numero_2;
+            		numero_2 = cambio;
+            	}
+            	
+            	for(int i = 0; i < 10; i++) {
+            		if(i % 5 == 0) {
+            			System.out.print("\n");
+            		}
+            		System.out.print((int) Math.floor(numero_1 + Math.random() * (numero_2 - numero_1 + 1)) + "\t"); // El +1 hace falta porque sino el numero_2 se excluye
+            	}
+            	break;
 
         }
         
