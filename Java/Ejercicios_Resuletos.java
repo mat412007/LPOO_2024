@@ -220,6 +220,41 @@ public class Demo{
             		System.out.print((int) Math.floor(numero_1 + Math.random() * (numero_2 - numero_1 + 1)) + "\t"); // El +1 hace falta porque sino el numero_2 se excluye
             	}
             	break;
+            	
+            case 19:
+            	System.out.print("Ingresa un numero: ");
+            	numero = in.nextInt();
+            	int numero_copia = numero;
+            	int cantidad_cifras = 1;
+            	while(true) {
+            		if(numero/10 != 0) {
+            			numero = numero / 10;
+            		}
+            		else {
+            			break;
+            		}
+            		cantidad_cifras++;
+            	}
+            	System.out.println("El numero " + numero_copia + " tiene " + cantidad_cifras + " cifras");
+            	break;
+            	
+            case 20:
+            	System.out.print("Ingresa un numero: ");
+            	numero = in.nextInt();
+            	boolean es_primo = true;
+            	
+            	for(int i = 2; i < numero; i++) {
+            		if(numero % i == 0) {
+            			es_primo = false;
+            		}
+            	}
+            	
+            	if(!es_primo) {
+            		System.out.println(numero + " no es un numero primo");
+            	}
+            	else {
+            		System.out.println(numero + " es un numero primo");
+            	}
 
         }
         
