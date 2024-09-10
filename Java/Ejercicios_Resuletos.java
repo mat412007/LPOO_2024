@@ -1,7 +1,17 @@
 import java.util.Scanner;
 
 public class Demo{
-    
+
+	static boolean primo(int numero) {
+		boolean es_primo = true;
+		for(int i = 2; i < numero; i++) {
+    		if(numero % i == 0) {
+    			es_primo = false;
+    		}
+    	}
+		return es_primo;
+	}
+	
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
 
@@ -250,11 +260,53 @@ public class Demo{
             	}
             	
             	if(!es_primo) {
-            		System.out.println(numero + " no es un numero primo");
+            		System.out.println("El " + numero + " no es un numero primo");
             	}
             	else {
-            		System.out.println(numero + " es un numero primo");
+            		System.out.println("El " + numero + " es un numero primo");
             	}
+            	break;
+            	
+            case 21:
+            	System.out.println("Numeros prios entre 1 y 100");
+            	for(int i = 2; i <= 100; i++) { // El 1 no se considera un numero primo
+            		es_primo = primo(i);
+            		if(es_primo) {
+            			System.out.print(i + "\n");
+            		}
+            	}
+            	break;
+            	
+            case 22:
+            	String frase = "La lluvia en Sevilla es una maravilla";
+            	char[] vocales = {'a', 'e', 'i', 'o', 'u'};
+            	int cantidad_vocales = 0;
+            	for(int i = 0; i < frase.length(); i++) {
+            		for(char vocal : vocales) {
+            			if(frase.charAt(i) == vocal) {
+                			cantidad_vocales++;
+                		}
+            		}
+            	}
+            	System.out.println("La frase tiene " + cantidad_vocales + " vocales");
+            	break;
+            	
+            case 23:
+            	frase = "La lluvia en Sevilla es una maravilla";
+            	System.out.println("Frase original: " + frase);
+            	System.out.println("Frase moficada: " + frase.replace('a', 'e'));
+            	break;
+            	
+            case 24:
+            	frase = "La lluvia en Sevilla es una maravilla";
+            	for(int i = 0; i < frase.length(); i++) {
+            		codigo_ASCII = (char) frase.charAt(i);
+            		System.out.print(codigo_ASCII + " ");
+            	}
+            	break;
+            	
+            case 25:
+            	
 
         }
         
