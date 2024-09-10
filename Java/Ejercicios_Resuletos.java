@@ -306,6 +306,62 @@ public class Demo{
             	break;
             	
             case 25:
+            	System.out.println("Inserta 2 operandos enteros y un signo aritmetico en el siguiente orden");
+            	System.out.print("Operando_1 signo_aritmetico Operando_2\n> ");
+            	int operando_1 = in.nextInt();
+            	String operacion = in.next();
+            	int operando_2 = in.nextInt();
+            	System.out.print("El resultado es: ");
+            	switch(operacion) {
+            		case "+":
+            			System.out.print(operando_1 + operando_2);
+            			break;
+            		case "-":
+            			System.out.print(operando_1 - operando_2);
+            			break;
+            		case "*":
+            			System.out.print(operando_1 * operando_2);
+            			break;
+            		case "/":
+            			System.out.print((float)operando_1 / operando_2);
+            			break;
+            		case "^":
+            			System.out.print((int)Math.pow(operando_1, operando_2));
+            			break;
+            		case "%":
+            			System.out.print(operando_1 % operando_2);
+            			break;
+            		default:
+            			System.out.print("Error. No disponible");
+            			break;
+            	}
+            	break;
+            	
+            case 26:
+            	System.out.println("Ingresa un numero mayor a 1");
+            	numero = 0;
+            	do {
+            		numero = in.nextInt();
+            	} while(numero <= 0);
+            	int suma = 0;
+            	for(int i = 1; i <= numero; i++) {
+            		suma += i;
+            	}
+            	System.out.println("La suma es igual a " + suma);
+            	break;
+            	
+            case 27:
+            	System.out.println("Inserta cualquier cantidad de numeros aleatorios: ");
+            	int numeros_introducidos = 0;
+            	numero = 0;
+            	do {
+            		numero = in.nextInt();
+            		numeros_introducidos++;
+            	} while(numero != -1);
+            	System.out.println("Insertaste " + numeros_introducidos + " numeros");
+            	break;
+            	
+            case 28:
             	
 
         }
