@@ -383,6 +383,7 @@ public class Demo{
             	System.out.println("La frase sin espacios es igual a: ");
             	System.out.println(frase_sin_espacios);
             	break;
+            	
             case 29:
             	String conjunto_frases = "";
             	do {
@@ -394,7 +395,46 @@ public class Demo{
             	System.out.println(conjunto_frases);
             	break;
             
-
+            case 30:
+                in.nextLine();
+                System.out.print("Inserta una frase: ");
+                frase = in.nextLine();
+                System.out.print("Deseas pasar la frase a:\n1- Mayuscula\n2- Minuscula\n> ");
+                numero = in.nextInt();
+                if(numero == 1){
+                    frase = frase.toUpperCase();
+                }
+                else if(numero == 2){
+                    frase = frase.toLowerCase();
+                }
+                System.out.println("La frase es: " + frase);
+                break;
+                
+            case 31:
+                in.nextLine();
+                System.out.print("Inserta una frase: ");
+                frase = in.nextLine();
+                System.out.println("Esta frase tiene " + frase.length() + " caracteres");
+                break;
+                
+            case 32:
+                System.out.print("Inserta una palabra: ");
+                String palabra_1 = in.next();
+                System.out.print("Inserta otra palabra: ");
+                String palabra_2 = in.next();
+                if(palabra_1.equals(palabra_2)){
+                    System.out.println("Estas palabras son iguales");
+                }
+                else{
+                    System.out.println("Estas palabras no son iguales");
+                }
+                break;
+                
+            case 33:
+                System.out.print("Inserta una palabra(al menos 6 letras): ");
+                String palabra = in.next();
+                System.out.println("La cuarta y quinta letra de la palabra son: " + palabra.substring(3, 5));
+    
         }
         
     }
