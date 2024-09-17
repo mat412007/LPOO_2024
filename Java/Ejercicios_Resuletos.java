@@ -14,13 +14,23 @@ public class Demo{
 	
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
+        
+        int numero_1;
+        int numero_2;
+        String nombre;
+        int codigo_ASCII;
+        char caracter;
+        int contador;
+        int numero;
+        boolean es_primo;
+        String frase;
 
         System.out.print("Que ejercicio deseas corregir: ");
         int ejercicio = in.nextInt();
         switch(ejercicio){
             case 1:
-                int numero_1 = 12;
-                int numero_2 = 3;
+                numero_1 = 12;
+                numero_2 = 3;
                 System.out.println("Suma: " + (numero_1 + numero_2));
                 System.out.println("Resta: " + (numero_1 - numero_2));
                 System.out.println("Multiplicacion: " + (numero_1 * numero_2));
@@ -43,7 +53,7 @@ public class Demo{
                 break;
                 
             case 3:
-                String nombre = "Matias";
+                nombre = "Matias";
                 System.out.println("Bienvenido, " + nombre);
                 break;
                 
@@ -74,8 +84,8 @@ public class Demo{
                 
             case 7:
             	System.out.print("Inserta un numero: ");
-            	int codigo_ASCII = in.nextInt();
-            	char caracter = (char) codigo_ASCII;
+            	codigo_ASCII = in.nextInt();
+            	caracter = (char) codigo_ASCII;
             	System.out.println("El numero " + codigo_ASCII + " representa el caracter " + caracter);
             	break;
             	
@@ -95,7 +105,7 @@ public class Demo{
             	break;
             	
             case 10:
-            	int contador = 1;
+            	contador = 1;
             	while(contador <= 100) {
             		System.out.print(contador + "\t");
             		if(contador % 10 == 0) {
@@ -163,7 +173,6 @@ public class Demo{
                 break;
               
             case 15:
-            	int numero;
             	do {
             		System.out.print("Ingresa un numero: ");
                 	numero = in.nextInt();
@@ -172,21 +181,21 @@ public class Demo{
             	break;
             
             case 16:
-            	boolean contraseña_correcta = false;
-            	String contraseña = "cataratasdaigual";
-            	String contraseña_input;
+            	boolean contrasena_correcta = false;
+            	String contrasena = "cataratasdaigual";
+            	String contrasena_input;
             	int intentos = 3;
             	do {
-            		System.out.print("Cual es la contraseña: ");
-            		contraseña_input = in.next();
-            		if(contraseña_input.equals(contraseña)) { // Comparacion de Strings en Java
+            		System.out.print("Cual es la contrasena: ");
+            		contrasena_input = in.next();
+            		if(contrasena_input.equals(contrasena)) { // Comparacion de Strings en Java
             			System.out.println("\nEnhorabuena");
-            			contraseña_correcta = true;
+            			contrasena_correcta = true;
             			break;
             		}
             		intentos--;
             	} while(intentos != 0);
-            	if(!contraseña_correcta) {
+            	if(!contrasena_correcta) {
             		System.out.println("\nHas desperdiciado los 3 intentos");
             	}
             	break;
@@ -251,7 +260,7 @@ public class Demo{
             case 20:
             	System.out.print("Ingresa un numero: ");
             	numero = in.nextInt();
-            	boolean es_primo = true;
+            	es_primo = true;
             	
             	for(int i = 2; i < numero; i++) {
             		if(numero % i == 0) {
@@ -278,7 +287,7 @@ public class Demo{
             	break;
             	
             case 22:
-            	String frase = "La lluvia en Sevilla es una maravilla";
+            	frase = "La lluvia en Sevilla es una maravilla";
             	char[] vocales = {'a', 'e', 'i', 'o', 'u'};
             	int cantidad_vocales = 0;
             	for(int i = 0; i < frase.length(); i++) {
@@ -362,7 +371,29 @@ public class Demo{
             	break;
             	
             case 28:
-            	
+            	System.out.print("Ingresa una frase: ");
+            	in.nextLine();
+            	frase = in.nextLine(); // Ayudan a uqe los nextLine() funcionen si ser influenciados por los otros inputs
+            	String frase_sin_espacios = "";
+            	for(int i = 0; i < frase.length(); i++) {
+            		if(frase.charAt(i) != ' ') {
+            			frase_sin_espacios += frase.charAt(i);
+            		}
+            	}
+            	System.out.println("La frase sin espacios es igual a: ");
+            	System.out.println(frase_sin_espacios);
+            	break;
+            case 29:
+            	String conjunto_frases = "";
+            	do {
+            	    in.nextLine(); 
+            		System.out.print("Inserta una frase: ");
+            		frase = in.nextLine();
+            		conjunto_frases += frase;
+            	} while(!frase.isEmpty()) ;
+            	System.out.println(conjunto_frases);
+            	break;
+            
 
         }
         
