@@ -12,7 +12,7 @@ public class Demo{
 		return es_primo;
 	}
 	
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException{ // Permite el uso de Thread.sleep(1000);
         Scanner in = new Scanner(System.in);
         in.useDelimiter("\n");
         
@@ -503,6 +503,46 @@ public class Demo{
                 System.out.println("Negativa: " + suma_negativa);
                 System.out.println("Media: " + media);
                 break;
+                
+            case 39:
+                int horas = 0;
+                int minutos = 0; 
+                int segundos = 0;
+                
+                while(true){
+                    if(horas < 10){
+                        System.out.print(0);
+                    }
+                    System.out.print(horas);
+                    System.out.print(":");
+                    if(minutos < 10){
+                        System.out.print(0);
+                    }
+                    System.out.print(minutos);
+                    System.out.print(":");
+                    if(segundos < 10){
+                        System.out.print(0);
+                    }
+                    System.out.print(segundos);
+                    System.out.print("\n");
+                    
+                    Thread.sleep(1000);
+                    
+                    segundos++;
+                    if(segundos == 60){
+                        segundos = 0;
+                        minutos++;
+                    }
+                    if(minutos == 60){
+                        minutos = 0;
+                        horas++;
+                    }
+                    if(horas == 24){
+                        horas = 0;
+                        minutos = 0; 
+                        segundos = 0; 
+                    }
+                }
     
         }
         
