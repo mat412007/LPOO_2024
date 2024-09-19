@@ -14,6 +14,7 @@ public class Demo{
 	
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
+        in.useDelimiter("\n");
         
         int numero_1;
         int numero_2;
@@ -434,6 +435,74 @@ public class Demo{
                 System.out.print("Inserta una palabra(al menos 6 letras): ");
                 String palabra = in.next();
                 System.out.println("La cuarta y quinta letra de la palabra son: " + palabra.substring(3, 5));
+                break;
+                
+            case 34:
+                System.out.print("Inserta una frase\n> ");
+                frase = in.next();
+                for(int i = 0; i < frase.length(); i++){ // length lleva parentesis con los Strings, no con los arrays
+                    if(frase.charAt(i) == ' '){
+                        System.out.print("\n");
+                    }
+                    else{
+                        System.out.print(frase.charAt(i));
+                    }
+                }
+                /*
+                String palabras[] = frase.split(" ");
+                for(int i=0;i<palabras.length;i++){
+                    System.out.println(palabras[i]);
+                }
+                */
+                break;
+                
+            case 38:
+                int mayor;
+                int menor;
+                int suma_total = 0;
+                int suma_positiva = 0;
+                int suma_negativa = 0;
+                double media;
+                contador = 0;
+                System.out.print("> ");
+                numero = in.nextInt();
+                contador++;
+                suma_total += numero;
+                mayor = numero;
+                menor = numero;
+                if(numero >= 0){
+                    suma_positiva += numero;
+                }
+                else{
+                    suma_negativa -= numero;
+                }
+                while(numero != -1) {
+                    System.out.print("> ");
+                    numero = in.nextInt();
+                    contador++;
+                    suma_total += numero;
+                    if(numero >= 0){
+                        suma_positiva += numero;
+                    }
+                    else{
+                        suma_negativa -= numero;
+                    }
+                    if(numero > mayor){
+                        mayor = numero;
+                    }
+                    else if(numero < menor){
+                        menor = numero;
+                    }
+                }
+                media = (double) suma_total / contador;
+                System.out.println("\nCantidad: " + contador);
+                System.out.println("Mayor: " + mayor);
+                System.out.println("Menor: " + menor);
+                System.out.println("Total: " + suma_total);
+                System.out.println("Positiva: " + suma_positiva);
+                System.out.println("Negativa: " + suma_negativa);
+                System.out.println("Media: " + media);
+                break;
     
         }
         
