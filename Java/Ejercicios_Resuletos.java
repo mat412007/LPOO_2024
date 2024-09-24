@@ -12,6 +12,27 @@ public class Demo{
 		return es_primo;
 	}
 	
+	static boolean es_un_dia(String dia_semanal){
+	    String[] semana = {"LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO"};
+	    for(String dia : semana){
+	        if(dia.equals(dia_semanal)){
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+	
+	static boolean dia_laboral(String dia_semanal){
+	    String[] dias_laborales = {"LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES"};
+	    String[] dias_libres = {"SABADO", "DOMINGO"};
+	    for(String dia : dias_laborales){
+	        if(dia.equals(dia_semanal)){
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+	
     public static void main(String[] args) throws InterruptedException{ // Permite el uso de Thread.sleep(1000);
         Scanner in = new Scanner(System.in);
         in.useDelimiter("\n");
@@ -455,6 +476,23 @@ public class Demo{
                 }
                 */
                 break;
+                
+            case 35:
+                System.out.print("Inserta un dia de la semana\n> ");
+                String dia = in.next().toUpperCase();
+                if(!es_un_dia(dia)){
+                    System.out.println("No es un dia de la semana");
+                    break;
+                }
+                if(dia_laboral(dia)){
+                    System.out.println("Ese es un dia laboral");
+                    break;
+                }
+                System.out.println("No es un dia laboral");
+                break;
+                
+            case 36:
+                
                 
             case 38:
                 int mayor;
