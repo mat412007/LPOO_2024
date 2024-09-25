@@ -107,7 +107,17 @@ public class Formulary extends javax.swing.JFrame {
     }                                           
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        String password_1 = "Contrasena";
         
+        String nombre = jTextField1.getText();
+        String password_2 = jTextField2.getText();
+        
+        if(password_2.equals(password_1)){
+            System.out.println("Acceso concedido");
+        }
+        else{
+            System.out.println("Error. Contrasena incorrecta");
+        }
     }                                        
 
     /**
