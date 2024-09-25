@@ -1,0 +1,90 @@
+package Ejercicios;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Ejercicio01 extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField Name_Input;
+	private JTextField Age_Input;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ejercicio01 frame = new Ejercicio01();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Ejercicio01() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTextArea ShownArea = new JTextArea();
+		ShownArea.setBounds(10, 90, 414, 160);
+		contentPane.add(ShownArea);
+		
+		JButton ShowButton = new JButton("Show");
+		ShowButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nombre = Name_Input.getText();
+				int edad = Integer.parseInt(Age_Input.getText());
+				ShownArea.append("Nombre :" + nombre + "\n");
+				ShownArea.append("Edad: " + edad + "\n\n");
+				
+				
+				/*String texto = "Helo world";
+				ShownArea.append(texto + "\n");*/
+				
+			}
+		});
+		ShowButton.setBounds(335, 21, 89, 23);
+		contentPane.add(ShowButton);
+		
+		JLabel lblNewLabel = new JLabel("Ingresar nombre: ");
+		lblNewLabel.setBounds(10, 11, 87, 14);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Ingresar edad: ");
+		lblNewLabel_1.setBounds(10, 43, 75, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		Name_Input = new JTextField();
+		Name_Input.setBounds(131, 8, 117, 20);
+		contentPane.add(Name_Input);
+		Name_Input.setColumns(10);
+		
+		Age_Input = new JTextField();
+		Age_Input.setColumns(10);
+		Age_Input.setBounds(131, 40, 117, 20);
+		contentPane.add(Age_Input);
+		
+	}
+}
